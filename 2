@@ -1,3999 +1,1607 @@
-/*Font Imports*/
-@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
-
-/*Keyframes*/
-@-webkit-keyframes messagefade {
-    0% {
-        opacity: 1;
-    }
-    75% {
-        opacity: 1;
-    }
-    99% {
-        opacity: 0;
-        top: 0;
-    }
-    100% {
-        opacity: 0;
-        top: -51px;
-    }
-}
-
-@-moz-keyframes messagefade {
-    0% {
-        opacity: 1;
-    }
-    75% {
-        opacity: 1;
-    }
-    99% {
-        opacity: 0;
-        top: 0;
-    }
-    100% {
-        opacity: 0;
-        top: -51px;
-    }
-}
-
-@keyframes messagefade {
-    0% {
-        opacity: 1;
-    }
-    75% {
-        opacity: 1;
-    }
-    99% {
-        opacity: 0;
-        top: 0;
-    }
-    100% {
-        opacity: 0;
-        top: -51px;
-    }
-}
-
-@keyframes helptip {
-    0% {
-        margin: 0 0 0 0px;
-    }
-    10% {
-        margin: 0 0 0 -15px;
-    }
-    20% {
-        margin: 0 0 0 0px;
-    }
-    30% {
-        margin: 0 0 0 -15px;
-    }
-    40% {
-        margin: 0 0 0 0px;
-    }
-    50% {
-        margin: 0 0 0 -15px;
-    }
-    60% {
-        margin: 0 0 0 0px;
-    }
-    70% {
-        margin: 0 0 0 -15px;
-    }
-    80% {
-        margin: 0 0 0 0px;
-    }
-    90% {
-        margin: 0 0 0 -15px;
-        visibility: visible;
-        opacity: 1;
-    }
-    100% {
-        margin: 0 0 0 0px;
-        visibility: hidden;
-        opacity: 0;
-    }
-}
-
-@keyframes msg-animation {
-    80% {
-        opacity: 1;
-    }
-    99.99% {
-        opacity: 0;
-        height: auto;
-        visibility: visible;
-        margin-bottom: 5px;
-        padding: 5px;
-    }
-    100%{
-        height: 0px;
-        margin: 0px;
-        padding: 0px;
-        visibility: hidden;
-    }
-}
-
-/* Didn't work, used transitions instead
-@keyframes modal-flow {
-    from {visibility: hidden;top:-100px;opacity: 0;}
-    to {visitbility: visible;top:0px;opacity:1;}
-}
-@-moz-keyframes modal-flow {
-    from {transform: scale(3.3) rotateX(60deg) translateY(-100%);}
-    to {transform: scale(1) rotateX(0deg) translateY(0%);}
-}*/
-/*END Keyframes*/
-
-/*Top Level Elements*/
-::selection {
-    background: rgba(9, 63, 59, 0.75);
-}
-
-sup {
-    vertical-align: super;
-    font-size: smaller;
-}
-
-html, body {
-    font-family: 'Source Sans Pro', sans-serif;
-    overflow-y: hidden;
-}
-
-a {
-    color: #FF5722;
-    text-decoration: underline;
-}
-
-b {
-    font-weight: bold;
-}
-
-em {
-    font-style: italic;
-}
-
-h2 {
-    font-size: 25px;
-    margin-bottom: 5px;
-}
-
-h3 {
-    font-size: 20px;
-    margin-bottom: 5px;
-}
-
-strong {
-    font-weight: bold;
-}
-
-/*Container classes and whatnot*/
-.container {
-    width: 668px;
-    margin: 0 auto;
-}
-
-.clear {
-    clear: both;
-    display: block;
-}
-
-.hide-me {
-    display: none !important;
-}
-
-.main-content {
-    background: saddlebrown;
-}
-
-/* Hide ad code if unfilled */
-.adsbygoogle[data-ad-status='unfilled'] {
-    display: none !important;
-}
-
-/*Now here's where the fun begins...*/
-.controller {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: none;
-    margin-top: 30px !important;
-    margin-left: 0px !important;
-}
-
-.controller.half {
-    margin-top: 0px !important;
-}
-
-/*BEGIN Xbox 360 Controller Styling*/
-.controller.xbox-old {
-    background: url(xbox-assets-old/bg.png);
-    height: 544px;
-    width: 668px;
-    /*    margin-left: -332px;
-        margin-top: -228px;*/
-}
-
-.xbox-old.disconnected {
-    background: url(xbox-assets-old/bg-disconnect.png);
-}
-
-.xbox-old.disconnected div {
-    display: none;
-}
-
-.xbox-old .triggers {
-    width: 430px;
-    height: 76px;
-    position: absolute;
-    left: 119px;
-}
-
-.xbox-old .trigger {
-    width: 33px;
-    height: 76px;
-    background: url(xbox-assets-old/trigger.png);
-    opacity: 0;
-}
-
-.xbox-old .trigger.left {
-    float: left;
-    background-position: 0 0;
-}
-
-.xbox-old .trigger.right {
-    float: right;
-    background-position: 0 -77px;
-}
-
-.xbox-old .bumper {
-    width: 119px;
-    height: 44px;
-    background: url(xbox-assets-old/bumper.png);
-    opacity: 0;
-}
-
-.xbox-old .bumpers {
-    position: absolute;
-    width: 516px;
-    height: 44px;
-    left: 76px;
-    top: 84px;
-}
-
-.xbox-old .bumper.pressed {
-    opacity: 1;
-}
-
-.xbox-old .bumper.left {
-    float: left;
-}
-
-.xbox-old .bumper.right {
-    float: right;
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-}
-
-.xbox-old .quadrant {
-    position: absolute;
-    background: url(xbox-assets-old/quadrant.png);
-    height: 100px;
-    width: 100px;
-    top: 165px;
-    left: 284px;
-    z-index: -1;
-}
-
-.xbox-old .p0 {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-}
-
-.xbox-old .p1 {
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
-}
-
-.xbox-old .p2 {
-    -webkit-transform: rotate(270deg);
-    transform: rotate(270deg);
-}
-
-.xbox-old .p3 {
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-}
-
-.xbox-old .arrows {
-    position: absolute;
-    width: 180px;
-    height: 29px;
-    top: 200px;
-    left: 244px;
-}
-
-.xbox-old .back, .xbox-old .start {
-    background: url(xbox-assets-old/arrow.png);
-    width: 34px;
-    height: 29px;
-}
-
-.xbox-old .back.pressed, .xbox-old .start.pressed {
-    background-position: 0 -30px;
-}
-
-.xbox-old .back {
-    float: left;
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-}
-
-.xbox-old .start {
-    float: right;
-}
-
-.xbox-old .abxy {
-    position: absolute;
-    width: 161px;
-    height: 160px;
-    top: 125px;
-    left: 451px
-}
-
-.xbox-old .button {
-    position: absolute;
-    width: 54px;
-    height: 54px;
-}
-
-.xbox-old .button.a {
-    width: 53px;
-    height: 53px;
-}
-
-.xbox-old .button.y {
-    width: 55px;
-    height: 54px;
-}
-
-.xbox-old .button.pressed {
-    background-position: 0 -55px;
-    margin-top: 6px;
-    opacity: 1;
-}
-
-.xbox-old .button.pressed.a {
-    background-position: 0 -54px;
-}
-
-.xbox-old .button.pressed.y {
-    background-position: 0 -56px;
-}
-
-.xbox-old .a {
-    background: url(xbox-assets-old/a.png);
-    top: 108px;
-    left: 55px;
-}
-
-.xbox-old .b {
-    background: url(xbox-assets-old/b.png);
-    top: 54px;
-    right: 0px;
-}
-
-.xbox-old .x {
-    background: url(xbox-assets-old/x.png);
-    top: 54px;
-}
-
-.xbox-old .y {
-    background: url(xbox-assets-old/y.png);
-    left: 54px;
-}
-
-.xbox-old .sticks {
-    position: absolute;
-    width: 383px;
-    height: 208px;
-    top: 167px;
-    left: 89px;
-}
-
-.xbox-old .stick {
-    position: absolute;
-    background: url(xbox-assets-old/stick.png);
-    height: 86px;
-    width: 86px;
-}
-
-.xbox-old .stick.pressed {
-    background-position: 0 -87px;
-}
-
-.xbox-old .stick.left {
-    top: 0;
-    left: 0;
-}
-
-.xbox-old .stick.right {
-    top: calc(100% - 86px);
-    left: calc(100% - 86px);
-}
-
-.xbox-old .dpad {
-    position: absolute;
-    width: 112px;
-    height: 112px;
-    top: 273px;
-    left: 174px;
-}
-
-.xbox-old .face {
-    position: absolute;
-    font-size: 30px;
-    line-height: 0;
-    color: white;
-    opacity: 0;
-    font-family: 'FontAwesome';
-}
-
-.xbox-old .face.pressed {
-    opacity: 1;
-}
-
-.xbox-old .face.up {
-    left: 42px;
-    top: 20px;
-}
-
-.xbox-old .face.up:after {
-    content: "\f062";
-}
-
-.xbox-old .face.down {
-    left: 42px;
-    bottom: 20px;
-}
-
-.xbox-old .face.down:after {
-    content: "\f063";
-}
-
-.xbox-old .face.left {
-    top: 56px;
-    left: 3px;
-}
-
-.xbox-old .face.left:after {
-    content: "\f060";
-}
-
-.xbox-old .face.right {
-    top: 56px;
-    right: 3px;
-}
-
-.xbox-old .face.right:after {
-    content: "\f061";
-}
-
-.xbox-old.half {
-    margin-top: -272px;
-}
-
-/*END Xbox 360 Controller Styling*/
-
-/*BEGIN Xbox One Controller Styling*/
-.controller.xbox {
-    background: url(xbox-assets/base.svg);
-    height: 630px;
-    width: 750px;
-    /*    margin-left: -375px;
-        margin-top: -285px;*/
-}
-
-.xbox.white {
-    background: url(xbox-assets/base-white.svg);
-}
-
-.xbox.disconnected {
-    background: url(xbox-assets/disconnected.svg);
-}
-
-.xbox.disconnected div {
-    display: none;
-}
-
-.xbox .triggers {
-    width: 446px;
-    height: 121px;
-    position: absolute;
-    left: 152px;
-}
-
-.xbox .trigger {
-    width: 88px;
-    height: 121px;
-    background: url(xbox-assets/trigger.svg);
-    opacity: 0;
-}
-
-.xbox .trigger.left {
-    float: left;
-    background-position: 0 0;
-}
-
-.xbox .trigger.right {
-    float: right;
-    transform: rotateY(180deg);
-}
-
-.xbox .bumper {
-    width: 170px;
-    height: 61px;
-    background: url(xbox-assets/bumper.svg);
-    opacity: 0;
-}
-
-.xbox .bumpers {
-    position: absolute;
-    width: 536px;
-    height: 61px;
-    left: 107px;
-    top: 129px;
-}
-
-.xbox .bumper.pressed {
-    opacity: 1;
-}
-
-.xbox .bumper.left {
-    float: left;
-}
-
-.xbox .bumper.right {
-    float: right;
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-}
-
-.xbox .quadrant {
-    position: absolute;
-    background: url(xbox-assets/quadrant.svg);
-    height: 45px;
-    width: 45px;
-    top: 258px;
-    left: 354px;
-    z-index: 0;
-}
-
-.xbox .p0 {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-}
-
-.xbox .p1 {
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
-}
-
-.xbox .p2 {
-    -webkit-transform: rotate(270deg);
-    transform: rotate(270deg);
-}
-
-.xbox .p3 {
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-}
-
-.xbox .arrows {
-    position: absolute;
-    width: 141px;
-    height: 33px;
-    top: 264px;
-    left: 306px;
-}
-
-.xbox .back, .xbox .start {
-    background: url(xbox-assets/start-select.svg);
-    width: 33px;
-    height: 33px;
-    opacity: 0;
-}
-
-.xbox .back.pressed, .xbox .start.pressed {
-    opacity: 1;
-}
-
-.xbox .back {
-    float: left;
-}
-
-.xbox .start {
-    background-position: 33px 0px;
-    float: right;
-}
-
-.xbox .abxy {
-    position: absolute;
-    width: 153px;
-    height: 156px;
-    top: 192px;
-    left: 488px;
-}
-
-.xbox .button {
-    position: absolute;
-    background: url(xbox-assets/abxy.svg);
-    width: 48px;
-    height: 48px;
-}
-
-.xbox .button.pressed {
-    background-position-y: -48px;
-    margin-top: 5px;
-    opacity: 1;
-}
-
-.xbox .a {
-    background-position: 0 0;
-    top: 108px;
-    left: 55px;
-}
-
-.xbox .b {
-    background-position: -49px 0;
-    top: 58px;
-    right: 0px;
-}
-
-.xbox .x {
-    background-position: -98px 0;
-    top: 58px;
-    left: 4px;
-}
-
-.xbox .y {
-    background-position: 48px 0;
-    left: 55px;
-    top: 7px;
-}
-
-.xbox .sticks {
-    position: absolute;
-    width: 371px;
-    height: 196px;
-    top: 239px;
-    left: 144px;
-}
-
-.xbox .stick {
-    position: absolute;
-    background: url(xbox-assets/stick.svg);
-    background-position: -85px 0;
-    height: 83px;
-    width: 83px;
-}
-
-.xbox .stick.pressed {
-    background-position: 0 0;
-}
-
-.xbox .stick.left {
-    top: 0;
-    left: 0;
-}
-
-.xbox .stick.right {
-    top: 113px;
-    left: 288px;
-}
-
-.xbox .dpad {
-    position: absolute;
-    width: 110px;
-    height: 111px;
-    top: 345px;
-    left: 223px;
-}
-
-.xbox .face {
-    background: url(xbox-assets/dpad.svg);
-    position: absolute;
-    opacity: 0;
-}
-
-.xbox .face.pressed {
-    opacity: 1;
-}
-
-.xbox .face.up {
-    background-position: 34px 0;
-    left: 38px;
-    top: 0px;
-    width: 34px;
-    height: 56px;
-}
-
-.xbox .face.down {
-    left: 38px;
-    bottom: 0;
-    width: 34px;
-    height: 56px;
-}
-
-.xbox .face.left {
-    background-position: 0 -93px;
-    width: 55px;
-    height: 35px;
-    top: 38px;
-    left: 0;
-}
-
-.xbox .face.right {
-    background-position: 0 -57px;
-    width: 55px;
-    height: 35px;
-    top: 38px;
-    right: 0;
-}
-
-.xbox.half {
-    margin-top: -315px;
-}
-
-.xbox {
-    background: no-repeat center;
-}
-
-/*END Xbox One Controller Styling*/
-
-/*BEGIN PS3 Controller Styling*/
-.controller.ps {
-    background: url(ps3-assets/base.png);
-    height: 558px;
-    width: 784px;
-    /*    margin-left: -392px;
-        margin-top: -259px;*/
-}
-
-.ps.disconnected {
-    background: url(ps3-assets/base-disconnect.png);
-}
-
-.ps.disconnected div {
-    display: none;
-}
-
-.ps .triggers {
-    width: 586px;
-    height: 65px;
-    position: absolute;
-    left: 99px;
-}
-
-.ps .trigger {
-    width: 86px;
-    height: 65px;
-    background: url(ps3-assets/triggers.png);
-    opacity: 0;
-}
-
-.ps .trigger.left {
-    float: left;
-}
-
-.ps .trigger.right {
-    float: right;
-}
-
-.ps .bumper {
-    width: 89px;
-    height: 28px;
-    background: url(ps3-assets/bumpers.png);
-    opacity: 0;
-}
-
-.ps .bumpers {
-    position: absolute;
-    width: 586px;
-    height: 28px;
-    left: 99px;
-    top: 72px;
-}
-
-.ps .bumper.pressed {
-    opacity: 1;
-}
-
-.ps .bumper.left {
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-    float: left;
-}
-
-.ps .bumper.right {
-    float: right;
-}
-
-.ps .quadrant {
-    position: absolute;
-    background: url(ps3-assets/player-n.png);
-    height: 17px;
-    width: 111px;
-    top: 140px;
-    left: 240px;
-}
-
-.ps .p0 {
-    background-position: 0 -6px;
-}
-
-.ps .p1 {
-    background-position: 0 -28px;
-}
-
-.ps .p2 {
-    background-position: 0 -49px;
-}
-
-.ps .p3 {
-    background-position: 0 -70px;
-}
-
-.ps .arrows {
-    position: absolute;
-    width: 205px;
-    height: 19px;
-    top: 250px;
-    left: 291px;
-}
-
-.ps .back, .ps .start {
-    background: url(ps3-assets/menus.png);
-    width: 34px;
-    height: 19px;
-}
-
-.ps .back.pressed, .ps .start.pressed {
-    background-position-y: -21px;
-    margin-top: 2px;
-}
-
-.ps .back {
-    float: left;
-    width: 38px;
-}
-
-.ps .start {
-    float: right;
-    width: 36px;
-    background-position: 37px 0;
-}
-
-.ps .abxy {
-    position: absolute;
-    width: 204px;
-    height: 205px;
-    top: 156px;
-    left: 538px;
-}
-
-.ps .button {
-    position: absolute;
-    width: 62px;
-    height: 62px;
-    background: url(ps3-assets/face-buttons.png);
-}
-
-.ps .button.pressed {
-    background-position-y: -64px;
-    margin-top: 5px;
-}
-
-.ps .a {
-    background-position: 62px 0;
-    top: 142px;
-    left: 71px;
-}
-
-.ps .b {
-    background-position: 125px 0;
-    top: 71px;
-    right: 0px;
-}
-
-.ps .x {
-    background-position: 0 0;
-    top: 71px;
-}
-
-.ps .y {
-    background-position: -63px 0;
-    left: 71px;
-}
-
-.ps .sticks {
-    position: absolute;
-    width: 364px;
-    height: 105px;
-    top: 328px;
-    left: 210px;
-}
-
-.ps .stick {
-    position: absolute;
-    background: url(ps3-assets/thumbs.png);
-    height: 105px;
-    width: 105px;
-}
-
-.ps .stick.pressed.left {
-    background-position-x: -106px;
-}
-
-.ps .stick.pressed.right {
-    background-position-x: -211px;
-}
-
-.ps .stick.left {
-    top: 0;
-    left: 0;
-}
-
-.ps .stick.right {
-    top: calc(100% - 105px);
-    left: calc(100% - 105px);
-}
-
-.ps .dpad {
-    position: absolute;
-    width: 140px;
-    height: 132px;
-    top: 192px;
-    left: 74px;
-}
-
-.ps .face {
-    background: url(ps3-assets/dpad.png);
-    position: absolute;
-}
-
-.ps .face.up, .ps .face.down {
-    width: 38px;
-    height: 52px;
-}
-
-.ps .face.left, .ps .face.right {
-    width: 52px;
-    height: 38px;
-}
-
-.ps .face.up {
-    left: 50px;
-    top: 0;
-    background-position: 92px 0px;
-}
-
-.ps .face.down {
-    left: 50px;
-    top: 79px;
-    background-position: 131px 0;
-}
-
-.ps .face.left {
-    top: 47px;
-    left: 0;
-    background-position: 0px 0;
-}
-
-.ps .face.right {
-    top: 47px;
-    right: 0px;
-    background-position: 53px 0;
-}
-
-.ps .face.pressed {
-    margin-top: 5px;
-    background-position-y: 52px;
-}
-
-.ps.half {
-    margin-top: -279px;
-}
-
-/*END PS3 Controller Styling*/
-
-/*BEGIN PS3 White Controller Styling*/
-.controller.ps.white {
-    background-image: url(ps3-white-assets/base.png);
-}
-
-.ps.white.disconnected {
-    background-image: url(ps3-white-assets/base-disconnect.png);
-}
-
-
-.ps.white .trigger {
-    background-image: url(ps3-white-assets/triggers.png);
-}
-
-
-.ps.white .bumper {
-    background-image: url(ps3-white-assets/bumpers.png);
-}
-
-.ps.white .quadrant {
-    background-image: url(ps3-white-assets/player-n.png);
-}
-
-.ps.white .back, .ps.white .start {
-    background-image: url(ps3-white-assets/menus.png);
-}
-
-.ps.white .button {
-    background-image: url(ps3-white-assets/face-buttons.png);
-}
-
-.ps.white .stick {
-    background-image: url(ps3-white-assets/thumbs.png);
-}
-
-.ps.white .face {
-    background-image: url(ps3-white-assets/dpad.png);
-}
-
-/*END PS3 White Controller Styling*/
-
-/*BEGIN PS4 Controller Styling*/
-.controller.ds4 {
-    background: url(ps4-assets/base.svg);
-    height: 598px;
-    width: 806px;
-    /*    margin-left: -403px;
-        margin-top: -280px;*/
-}
-
-.ds4.disconnected {
-    background: url(ps4-assets/disconnected.svg);
-}
-
-.ds4.disconnected div {
-    display: none;
-}
-
-.ds4 .triggers {
-    width: 588px;
-    height: 90px;
-    position: absolute;
-    left: 109px;
-}
-
-.ds4 .trigger {
-    width: 99px;
-    height: 100%;
-    background: url(ps4-assets/triggers.svg);
-    opacity: 0;
-}
-
-.ds4 .trigger.left {
-    float: left;
-}
-
-.ds4 .trigger.right {
-    float: right;
-    background-position-x: 99px;
-}
-
-.ds4 .bumper {
-    width: 99px;
-    height: 23px;
-    background: url(ps4-assets/bumper.svg) no-repeat;
-    opacity: 0;
-}
-
-.ds4 .bumpers {
-    position: absolute;
-    width: 588px;
-    height: 23px;
-    left: 109px;
-    top: 94px;
-}
-
-.ds4 .bumper.pressed {
-    opacity: 1;
-}
-
-.ds4 .bumper.left {
-    /* -webkit-transform: rotateY(180deg); */
-    /* transform: rotateY(180deg); */
-    float: left;
-}
-
-.ds4 .bumper.right {
-    float: right;
-    transform: rotateY(180deg);
-}
-
-.ds4 .touchpad {
-    width: 262px;
-    height: 151px;
-    position: absolute;
-    left: 272px;
-    top: 122px;
-}
-
-.ds4 .touchpad.pressed {
-    background: url(ps4-assets/touchpad.svg) no-repeat center;
-}
-
-.ds4 .meta {
-    width: 42px;
-    height: 42px;
-    position: absolute;
-    left: 382px;
-    bottom: 216px;
-}
-
-.ds4 .meta.pressed {
-    background: url(ps4-assets/meta.svg) no-repeat center;
-}
-
-/*Not needed, but I like keeping them here for posterity*/
-/*.ds4 .quadrant{
-position: absolute;
-background: url(ps4-assets/player-n.svg);
-height: 17px;
-width: 111px;
-top: 140px;
-left: 240px;
-}
-.ds4 .p0{
-background-position: 0 -6px;
-}
-.ds4 .p1{
-background-position: 0 -28px;
-}
-.ds4 .p2{
-background-position: 0 -49px;
-}
-.ds4 .p3{
-background-position: 0 -70px;
-}*/
-.ds4 .arrows {
-    position: absolute;
-    width: 352px;
-    height: 46px;
-    top: 142px;
-    left: 227px;
-}
-
-.ds4 .back, .ds4 .start {
-    background: url(ps4-assets/start.svg);
-    width: 28px;
-    height: 46px;
-    opacity: 0;
-}
-
-.ds4 .back.pressed, .ds4 .start.pressed {
-    /* background-position-y: -21px; */
-    /* margin-top: 2px; */
-    opacity: 1;
-}
-
-.ds4 .back {
-    float: left;
-    /* width: 28px; */
-}
-
-.ds4 .start {
-    float: right;
-    /* width: 28px; */
-    background-position: 28px 0;
-}
-
-.ds4 .abxy {
-    position: absolute;
-    width: 170px;
-    height: 171px;
-    top: 159px;
-    left: 567px;
-}
-
-.ds4 .button {
-    position: absolute;
-    width: 55px;
-    height: 55px;
-    background: url(ps4-assets/face.svg);
-}
-
-.ds4 .button.pressed {
-    background-position-y: 55px;
-    /* margin-top: 5px; */
-}
-
-.ds4 .a {
-    background-position: 0 0;
-    bottom: 0;
-    left: 58px;
-}
-
-.ds4 .b {
-    background-position: -57px 0;
-    top: 58px;
-    right: 0px;
-}
-
-.ds4 .x {
-    background-position: -113px 0;
-    top: 58px;
-}
-
-.ds4 .y {
-    background-position: 55px 0;
-    left: 58px;
-}
-
-.ds4 .sticks {
-    position: absolute;
-    width: 361px;
-    height: 105px;
-    top: 308px;
-    left: 228px;
-}
-
-.ds4 .stick {
-    position: absolute;
-    background: url(ps4-assets/sticks.svg);
-    height: 94px;
-    width: 94px;
-}
-
-.ds4 .stick.pressed.left {
-    background-position-x: -96px;
-}
-
-.ds4 .stick.pressed.right {
-    background-position-x: -192px;
-}
-
-.ds4 .stick.left {
-    top: 0;
-    left: 0;
-}
-
-.ds4 .stick.right {
-    top: calc(100% - 105px);
-    left: calc(100% - 105px);
-}
-
-.ds4 .dpad {
-    position: absolute;
-    width: 125px;
-    height: 126px;
-    top: 181px;
-    left: 92px;
-}
-
-.ds4 .face {
-    background: url(ps4-assets/dpad.svg);
-    position: absolute;
-}
-
-.ds4 .face.up, .ds4 .face.down {
-    width: 36px;
-    height: 52px;
-}
-
-.ds4 .face.left, .ds4 .face.right {
-    width: 52px;
-    height: 36px;
-}
-
-.ds4 .face.up {
-    left: 44px;
-    top: 0;
-    background-position: -37px 0px;
-}
-
-.ds4 .face.down {
-    left: 44px;
-    bottom: 0;
-    background-position: 0px 0;
-}
-
-.ds4 .face.left {
-    top: 45px;
-    left: 0;
-    background-position: 104px 0;
-}
-
-.ds4 .face.right {
-    top: 45px;
-    right: 0px;
-    background-position: 52px 0;
-}
-
-.ds4 .face.pressed {
-    /* margin-top: 5px; */
-    background-position-y: 52px;
-}
-
-.ds4.half {
-    margin-top: -300px;
-}
-
-/*END PS4 Controller Styling*/
-
-/*BEGIN PS4 White Controller Styling*/
-.controller.ds4.white {
-    background-image: url(ps4-white-assets/base.svg);
-}
-
-.ds4.white.disconnected {
-    background: url(ps4-assets/disconnected.svg);
-}
-
-.ds4.white .trigger {
-    background-image: url(ps4-white-assets/triggers.svg);
-}
-
-.ds4.white .bumper {
-    background-image: url(ps4-white-assets/bumper.svg);
-}
-
-.ds4.white .touchpad.pressed {
-    background-image: url(ps4-white-assets/touchpad.svg);
-}
-
-.ds4.white .back, .ds4 .start {
-    background-image: url(ps4-white-assets/start.svg);
-}
-
-.ds4.white .button {
-    background-image: url(ps4-white-assets/face.svg);
-}
-
-.ds4.white .stick {
-    background-image: url(ps4-white-assets/sticks.svg);
-}
-
-.ds4.white .face {
-    background-image: url(ps4-white-assets/dpad.svg);
-}
-
-/*END PS4 White Controller Styling*/
-
-/*BEGIN NES Controller Styling*/
-.controller.nes {
-    background: url(nes-assets/base.png);
-    width: 832px;
-    height: 391px;
-    /*    margin-left: -416px;
-        margin-top: -175px;*/
-}
-
-.nes.disconnected {
-    background: url(nes-assets/base-disconnect.png);
-}
-
-.nes.disconnected div {
-    display: none;
-}
-
-.nes .quadrant {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 16pt;
-    color: white;
-    position: absolute;
-    height: 17px;
-    width: 180px;
-    top: 90px;
-    left: 50px;
-    text-align: center;
-}
-
-.nes .p0:after {
-    content: 'Player 1';
-}
-
-.nes .p1:after {
-    content: 'Player 2';
-}
-
-.nes .p2:after {
-    content: 'Player 3';
-}
-
-.nes .p3:after {
-    content: 'Player 4';
-}
-
-.nes .arrows {
-    position: absolute;
-    width: 189px;
-    height: 22px;
-    top: 251px;
-    left: 288px;
-}
-
-.nes .back, .nes .start {
-    background: url(nes-assets/menu.png);
-    width: 73px;
-    height: 20px;
-}
-
-.nes .back.pressed, .nes .start.pressed {
-    background-position-y: -21px;
-    margin-top: 4px;
-}
-
-.nes .back {
-    float: left;
-}
-
-.nes .start {
-    float: right;
-}
-
-.nes .abxy {
-    position: absolute;
-    width: 180px;
-    height: 74px;
-    top: 223px;
-    left: 570px;
-}
-
-.nes .button {
-    position: absolute;
-    width: 74px;
-    height: 74px;
-    background: url(nes-assets/buttons.png);
-    top: 0;
-}
-
-.nes .button.pressed {
-    background-position-y: -77px;
-    margin-top: 5px;
-}
-
-.nes .a {
-    right: 0;
-}
-
-.nes .b {
-    left: 0px;
-}
-
-.nes .x, .nes .y {
-    display: none;
-}
-
-.nes .dpad {
-    position: absolute;
-    width: 135px;
-    height: 131px;
-    top: 142px;
-    left: 65px;
-}
-
-.nes .face {
-    background: url(nes-assets/dpad.png);
-    position: absolute;
-    width: 38px;
-    height: 38px;
-}
-
-.nes .face.up, .nes .face.down {
-    left: 50px;
-}
-
-.nes .face.left, .nes .face.right {
-    top: 49px;
-}
-
-.nes .face.up {
-    top: 0;
-    background-position: 111px 0px;
-}
-
-.nes .face.down {
-    top: 98px;
-    background-position: 75px 0;
-}
-
-.nes .face.left {
-    left: 0;
-    background-position: 0px 0;
-}
-
-.nes .face.right {
-    right: 0px;
-    background-position: 39px 0;
-}
-
-.nes .face.pressed {
-    background-position-y: 38px;
-}
-
-.nes.half {
-    margin-top: -195px;
-}
-
-/*END NES Controller Styling*/
-
-/*BEGIN FightPad Pro Controller Styling*/
-.controller.fpp {
-    background: url(fpp-assets/base.svg) center;
-    height: 755px;
-    width: 938px;
-}
-
-.fpp.disconnected {
-    background: url(fpp-assets/base-disconnect.svg) no-repeat;
-}
-
-.fpp.disconnected div {
-    display: none;
-}
-
-.fpp .triggers {
-    width: 684px;
-    height: 104px;
-    position: absolute;
-    left: 145px;
-}
-
-.fpp .trigger {
-    width: 96px;
-    height: 104px;
-    background: url(fpp-assets/triggers.svg) no-repeat;
-    opacity: 0;
-}
-
-.fpp .trigger.left {
-    float: left;
-}
-
-.fpp .trigger.right {
-    float: right;
-    background-position-x: -98px
-}
-
-.fpp .bumpers {
-    position: absolute;
-    width: 816px;
-    height: 76px;
-    left: 65px;
-    top: 115px;
-}
-
-.fpp .bumper {
-    width: 221px;
-    height: 75px;
-    background: url(fpp-assets/bumpers.svg);
-    opacity: 0;
-}
-
-.fpp .bumper.pressed {
-    opacity: 1;
-}
-
-.fpp .bumper.left {
-    float: left;
-}
-
-.fpp .bumper.right {
-    background-position-x: -223px;
-    float: right;
-}
-
-.fpp .bumper.right:after {
-    content: "";
-    position: absolute;
-    background: url(fpp-assets/buttons.svg) no-repeat;
-    background-position: -280px 0px;
-    width: 70px;
-    height: 70px;
-    top: 121px;
-    right: 41px;
-}
-
-.fpp .quadrant {
-    position: absolute;
-    background: url(fpp-assets/quadrant.svg) no-repeat;
-    height: 46px;
-    width: 152px;
-    top: 365px;
-    left: 347px;
-}
-
-.fpp .p0 {
-    background-position: -6px 0;
-}
-
-.fpp .p1 {
-    background-position: -160px 0;
-}
-
-.fpp .p2 {
-    background-position: -317px 0;
-}
-
-.fpp .p3 {
-    background-position: -474px 0;
-}
-
-.fpp .arrows {
-    position: absolute;
-    width: 175px;
-    height: 43px;
-    top: 550px;
-    left: 480px;
-}
-
-.fpp .arrows:before {
-    content: "";
-    position: absolute;
-    width: 55px;
-    height: 22px;
-    background: url(fpp-assets/slider.svg) no-repeat;
-    left: -126px;
-}
-
-.fpp .back.pressed, .fpp .start.pressed {
-    background: url(fpp-assets/options.svg) no-repeat;
-    width: 81px;
-    height: 43px;
-}
-
-.fpp .start.pressed {
-    background-position-x: -83px;
-}
-
-.fpp .back {
-    float: left;
-}
-
-.fpp .start {
-    transform: translateX(-29px);
-    float: right;
-}
-
-.fpp .abxy {
-    position: absolute;
-    width: 201px;
-    height: 205px;
-    top: 235px;
-    left: 600px;
-}
-
-.fpp .trigger-button.right.pressed {
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    background: url(fpp-assets/buttons.svg) no-repeat;
-    background-position: -351px 0;
-    right: -66px;
-    top: 304px;
-}
-
-.fpp .button {
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    background: url(fpp-assets/buttons.svg) no-repeat;
-    opacity: 0;
-}
-
-.fpp .button.pressed {
-    opacity: 1;
-}
-
-.fpp .a {
-    background-position: 0 0;
-    top: 135px;
-    left: 57px;
-}
-
-.fpp .b {
-    background-position: -70px 0;
-    top: 79px;
-    right: 0px;
-}
-
-.fpp .x {
-    background-position: -140px 0;
-    top: 67px;
-}
-
-.fpp .y {
-    background-position: -210px 0;
-    left: 75px;
-    top: 11px;
-}
-
-.fpp .sticks {
-    position: absolute;
-    width: 114px;
-    height: 114px;
-    top: 386px;
-    left: 215px;
-}
-
-.fpp .stick {
-    position: absolute;
-    background: url(fpp-assets/sticks.svg) no-repeat;
-    height: 114px;
-    width: 114px;
-}
-
-.fpp .stick.pressed.left {
-    background-position-x: -115px;
-}
-
-.fpp .stick.pressed.right {
-    background-position-x: -229px;
-}
-
-.fpp .stick.left {
-    top: 0;
-    left: 0;
-}
-
-.fpp .stick.right {
-    display: none;
-    top: 0;
-    left: 0;
-}
-
-.fpp .dpad {
-    position: absolute;
-    width: 157px;
-    height: 156px;
-    top: 242px;
-    left: 69px;
-}
-
-.fpp .face {
-    background: url(fpp-assets/dpad.svg) no-repeat;
-    position: absolute;
-    opacity: 0;
-}
-
-.fpp .face.pressed {
-    opacity: 1;
-}
-
-.fpp .face.up, .fpp .face.down {
-    width: 110px;
-    height: 78px;
-}
-
-.fpp .face.left, .fpp .face.right {
-    width: 78px;
-    height: 111px;
-}
-
-.fpp .face.up {
-    left: 23px;
-    top: 0;
-    background-position: 0 0px;
-}
-
-.fpp .face.down {
-    left: 23px;
-    bottom: 2px;
-    background-position: -111px 0;
-}
-
-.fpp .face.left {
-    top: 22px;
-    left: 1px;
-    background-position: -222px 0;
-}
-
-.fpp .face.right {
-    top: 22px;
-    right: 0px;
-    background-position: -303px 0;
-}
-
-/*END FightPad Pro Controller Styling*/
-/*BEGIN Fight Stick Controller Styling*/
-.controller.fight-stick {
-    background: url(stick-assets/base.svg) center no-repeat;
-    height: 534px;
-    width: 1122px;
-}
-
-.fight-stick.disconnected {
-    background: url(stick-assets/disconnected.svg) no-repeat;
-}
-
-.fight-stick.disconnected div {
-    display: none;
-}
-
-.fight-stick .triggers {
-    width: 326px;
-    height: 198px;
-    position: absolute;
-    right: 0px;
-    bottom: 66px;
-}
-
-.fight-stick .trigger-button {
-    width: 123px;
-    height: 123px;
-    background: #333333;
-    border-radius: 100%;
-    opacity: 1;
-    display: block;
-}
-
-.fight-stick .trigger-button.pressed {
-    transform: translateY(5px);
-    -webkit-filter: invert(1);
-}
-
-.fight-stick .trigger-button.left {
-    position: absolute;
-    float: right;
-    bottom: 4px;
-    right: 42px;
-}
-
-.fight-stick .trigger-button.right {
-    float: left;
-}
-
-.fight-stick .bumpers {
-    width: 295px;
-    height: 198px;
-    position: absolute;
-    right: 0px;
-    top: 88px;
-}
-
-.fight-stick .bumper {
-    width: 123px;
-    height: 123px;
-    background: #333333;
-    border-radius: 100%;
-    opacity: 1;
-    display: block;
-}
-
-.fight-stick .bumper.pressed {
-    transform: translateY(5px);
-    -webkit-filter: invert(1);
-}
-
-.fight-stick .bumper.left {
-    position: absolute;
-    float: right;
-    bottom: 4px;
-    right: 11px;
-}
-
-.fight-stick .bumper.right {
-    float: left;
-}
-
-.fight-stick .quadrant {
-    position: absolute;
-    font-family: "Press Start 2P";
-    font-size: 28px;
-    font-weight: normal;
-    top: 20px;
-    left: 236px;
-    color: white;
-}
-
-.fight-stick .p0:after {
-    content: "Player 1";
-}
-
-.fight-stick .p1:after {
-    content: "Player 2";
-}
-
-.fight-stick .p2:after {
-    content: "Player 3";
-}
-
-.fight-stick .p3:after {
-    content: "Player 4";
-}
-
-.fight-stick .arrows {
-    position: absolute;
-    width: 70px;
-    height: 217px;
-    top: 53px;
-    left: 49px;
-}
-
-.fight-stick .back, .fight-stick .start {
-    width: 70px;
-    height: 70px;
-    background: #333333;
-    display: block;
-    border-radius: 100%;
-}
-
-.fight-stick .back {
-    float: left;
-}
-
-.fight-stick .start {
-    position: absolute;
-    bottom: 4px;
-    left: -1px;
-}
-
-.fight-stick .back.pressed, .fight-stick .start.pressed {
-    transform: translateY(5px);
-    -webkit-filter: invert(1);
-}
-
-.fight-stick .abxy {
-    position: absolute;
-    width: 310px;
-    height: 370px;
-    bottom: 103px;
-    left: 472px;
-}
-
-.fight-stick .button {
-    width: 123px;
-    height: 123px;
-    background: #333333;
-    border-radius: 100%;
-    opacity: 1;
-    display: block;
-    position: absolute;
-}
-
-.fight-stick .button.pressed {
-    transform: translateY(5px);
-    -webkit-filter: invert(1);
-}
-
-.fight-stick .a {
-    bottom: 0px;
-    left: 0px;
-}
-
-.fight-stick .b {
-    bottom: 66px;
-    right: 31px;
-}
-
-.fight-stick .x {
-    top: 66px;
-    left: 33px
-}
-
-.fight-stick .y {
-    right: 0px;
-    top: 0px;
-}
-
-.fight-stick .fstick {
-    position: absolute;
-    width: 221px;
-    height: 221px;
-    top: 199px;
-    left: 192px;
-    background: url(stick-assets/stick.svg)
-}
-
-.fight-stick .fstick.up {
-    background-position-x: -1762px;
-}
-
-.fight-stick .fstick.down {
-    background-position-x: -882px;
-}
-
-.fight-stick .fstick.left {
-    background-position-x: -1322px;
-}
-
-.fight-stick .fstick.right {
-    background-position-x: -442px;
-}
-
-.fight-stick .fstick.up.right {
-    background-position-x: -222px;
-}
-
-.fight-stick .fstick.up.left {
-    background-position-x: -1542px;
-}
-
-.fight-stick .fstick.down.right {
-    background-position-x: -662px;
-}
-
-.fight-stick .fstick.down.left {
-    background-position-x: -1102px;
-}
-
-/*END Fight Stick Controller Styling*/
-
-/*BEGIN GameCube Controller Styling*/
-.controller.gc {
-    background: url(gc-assets/base.svg) no-repeat;
-    height: 837px;
-    width: 978px;
-}
-
-.gc.disconnected {
-    background: url(gc-assets/disconnected.svg) no-repeat;
-}
-
-.gc.disconnected div {
-    display: none;
-}
-
-.gc .triggers {
-    width: 775px;
-    height: 95px;
-    position: absolute;
-    left: 102px;
-}
-
-.gc .trigger {
-    width: 131px;
-    height: 100%;
-    background: url(gc-assets/trigger.svg);
-    opacity: 0;
-}
-
-.gc .trigger.left {
-    float: left;
-}
-
-.gc .trigger.right {
-    float: right;
-}
-
-.gc .bumper {
-    width: 158px;
-    height: 100%;
-    background: url(gc-assets/buttons.svg) no-repeat;
-    background-position: -358px 0px;
-    opacity: 0;
-}
-
-.gc .bumpers {
-    position: absolute;
-    width: 792px;
-    height: 73px;
-    left: 103px;
-    top: 138px;
-}
-
-.gc .bumper.pressed {
-    opacity: 1;
-}
-
-.gc .bumper.left {
-    /* -webkit-transform: rotateY(180deg); */
-    /* transform: rotateY(180deg); */
-    float: left;
-    display: none;
-}
-
-.gc .bumper.right {
-    float: right;
-}
-
-/*Not needed, but I like keeping them here for posterity*/
-/*.gc .quadrant{
-position: absolute;
-background: url(gc-assets/player-n.svg);
-height: 17px;
-width: 111px;
-top: 140px;
-left: 240px;
-}
-.gc .p0{
-background-position: 0 -6px;
-}
-.gc .p1{
-background-position: 0 -28px;
-}
-.gc .p2{
-background-position: 0 -49px;
-}
-.gc .p3{
-background-position: 0 -70px;
-}*/
-
-.gc .arrows {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    top: 324px;
-    left: 465px;
-}
-
-.gc .back, .gc .start {
-    width: 43px;
-    height: 43px;
-    background: #E7E7E7;
-    border-radius: 100%;
-    border: solid 4.5px rgba(0, 0, 0, .65);
-    background-clip: content-box;
-    opacity: 0;
-}
-
-.gc .back.pressed, .gc .start.pressed {
-    opacity: 1;
-    filter: invert(1);
-    -webkit-filter: invert(1);
-}
-
-.gc .back {
-    display: none;
-}
-
-.gc .start {
-    float: right;
-}
-
-.gc .abxy {
-    position: absolute;
-    width: 288px;
-    height: 230px;
-    top: 207px;
-    left: 640px;
-}
-
-.gc .button {
-    position: absolute;
-    background: url(gc-assets/buttons.svg);
-    opacity: 0;
-}
-
-.gc .button.pressed {
-    opacity: 1;
-}
-
-.gc .a {
-    background-position: 0 0;
-    width: 114px;
-    height: 114px;
-    bottom: 35px;
-    left: 91px;
-}
-
-.gc .b {
-    width: 71px;
-    height: 71px;
-    background-position: -116px 0;
-    bottom: 0px;
-    left: 1px;
-}
-
-.gc .x {
-    width: 66px;
-    height: 103px;
-    background-position: -292px 0;
-    top: 65px;
-    right: 0px;
-}
-
-.gc .y {
-    width: 103px;
-    height: 66px;
-    background-position: -189px 0;
-    left: 67px;
-    top: 2px;
-}
-
-.gc .sticks {
-    position: absolute;
-    width: 628px;
-    height: 392px;
-    top: 258px;
-    left: 106px;
-}
-
-.gc .stick {
-    position: absolute;
-}
-
-.gc .stick.left {
-    top: 24px;
-    left: 23px;
-    background: url(gc-assets/left-stick.svg) center no-repeat;
-    height: 121px;
-    width: 121px;
-}
-
-.gc .stick.right {
-    top: calc(100% - 127px);
-    left: calc(100% - 125px);
-    background: url(gc-assets/cstick.svg) center no-repeat;
-    width: 84px;
-    height: 84px;
-}
-
-.gc .dpad {
-    position: absolute;
-    width: 125px;
-    height: 126px;
-    top: 181px;
-    left: 92px;
-}
-
-.gc .dpad {
-    position: absolute;
-    width: 130px;
-    height: 130px;
-    top: 497px;
-    left: 263px;
-}
-
-.gc .face {
-    background: url(gc-assets/dpad.svg) no-repeat;
-    position: absolute;
-    opacity: 0;
-}
-
-.gc .face.up, .gc .face.down {
-    width: 44px;
-    height: 65px;
-}
-
-.gc .face.left, .gc .face.right {
-    width: 65px;
-    height: 44px;
-}
-
-.gc .face.up {
-    left: 42px;
-    top: 0;
-    background-position: 0px 0px;
-}
-
-.gc .face.down {
-    left: 42px;
-    bottom: 0;
-    background-position: -46px 0;
-}
-
-.gc .face.left {
-    top: 43px;
-    left: 0;
-    background-position: -93px 0;
-}
-
-.gc .face.right {
-    top: 43px;
-    right: 0px;
-    background-position: -160px 0;
-}
-
-.gc .face.pressed {
-    opacity: 1;
-}
-
-/*END GameCube Controller Styling*/
-
-/*Start N64 Styling*/
-.controller.n64 {
-    background: url(n64-assets/base.svg);
-    height: 851px;
-    width: 810px;
-}
-
-.controller.n64.disconnected {
-    background: url(n64-assets/disconnected.svg);
-}
-
-.controller.n64.disconnected * {
-    display: none;
-}
-
-.n64 .bumpers{
-    position: absolute;
-    height: 100px;
-    width: 664px;
-    top: 140px;
-    left: 73px
-}
-
-.n64 .bumper{
-    background: url(n64-assets/buttons.svg);
-    height: 68px;
-    width: 174px;
-    display: block;
-    position: absolute;
-}
-
-.n64 .bumper.right{
-    right: 0;
-    transform: rotateY(180deg);
-}
-
-.n64 .triggers{
-    position: absolute;
-    left: 379px;
-}
-
-.n64 .trigger.left{
-    width: 52px;
-    height: 88px;
-    background: url(n64-assets/buttons.svg);
-    display: block;
-    background-position-y: -72px;
-}
-
-.n64 .dpad{
-    width: 150px;
-    height: 150px;
-    /*     background: #FF00008F; */
-    position: absolute;
-    top: 281px;
-    left: 106px;
-}
-
-.n64 .dpad .face{
-    background: url(n64-assets/buttons.svg);
-    height: 64px;
-    width: 44px;
-    background-position-y: -164px;
-    display: block;
-    position: absolute
-}
-
-.n64 .dpad .face.up{
-    left: 32px
-}
-
-
-.n64 .dpad .face.down{
-    transform: rotate(180deg);
-    left: 32px;
-    top: 65px
-}
-
-.n64 .dpad .face.left{
-    transform: rotate(-90deg);
-    top: 33px
-}
-
-.n64 .dpad .face.right{
-    transform: rotate(90deg);
-    top: 33px;
-    left: 64px;
-}
-
-/* We're using the node used for a controller's system button here */
-.n64 .meta{
-    background: url(n64-assets/buttons.svg);
-    width: 55px;
-    height: 55px;
-    background-position-y: -282px;
-    position: absolute;
-    left: 377px;
-    top: 344px
-}
-
-.n64 .abxy{
-    position: absolute;
-    top: 245px;
-    left: 609px
-}
-
-.n64 .abxy .button{
-    background: url(n64-assets/buttons.svg);
-    width: 47px;
-    height: 47px;
-    background-position-y: -231px;
-    display: block;
-    position: absolute;
-}
-
-.n64 .abxy .button.a{
-    left: 45px
-}
-
-.n64 .abxy .button.b{
-    left: 44px;
-    top: 92px;
-    transform: rotate(180deg);
-}
-
-.n64 .abxy .button.x{
-    top: 45px;
-    left: -2px;
-    transform: rotate(-90deg)
-}
-
-.n64 .abxy .button.y{
-    left: 91px;
-    top: 46px;
-    transform: rotate(90deg);
-}
-
-.n64 .arrows{
-    position: absolute;
-    top: 335px;
-    left: 529px
-}
-
-.n64 .back, .n64 .start{
-    background: url(n64-assets/buttons.svg);
-    width: 61px;
-    height: 61px;
-    background-position-y: -341px;
-    display: block;
-    position: relative;
-}
-
-.n64 .start{
-    background-position-y: -405px;
-    top: -5px;
-    left: 56px
-}
-
-.n64 .sticks{
-    position: absolute;
-    top: 493px;
-    left: 369px;
-}
-
-.n64 .stick.left{
-    background: url(n64-assets/buttons.svg);
-    width: 73px;
-    height: 73px;
-    display: block;
-    background-position-y: 73px
-}
-
-.n64 .button,
-.n64 .face,
-.n64 .meta,
-.n64 .bumper,
-.n64 .trigger,
-.n64 .arrows *{
-    opacity: 0
-}
-
-.n64 .pressed{
-    opacity: 1
-}
-/*END N64 Styling*/
-
-/*Navbar Elements & their inner contents*/
-.navbar {
-    height: 50px;
-    background: cornflowerblue;
-    border-bottom: 1px solid #5570b8;
-    color: white;
-    width: 100%;
-    z-index: 10;
-    position: absolute;
-    top: 0;
-    text-align: center;
-}
-
-.nocon {
-    background: indianred;
-    border-bottom: none;
-    border-top: 1px solid #FF7474;
-    bottom: 0;
-    top: auto;
-}
-
-.nocon.visible, .pselect.visible {
-    visibility: visible;
-    opacity: 1;
-}
-
-.nocon ul {
-    float: left;
-    display: inline-block;
-}
-
-.navbar .content {
-    font-size: 25px;
-    width: 960px;
-    display: flex;
-    margin: 0 auto;
-    line-height: 50px;
-    justify-content: space-between;
-}
-
-/*.navbar .content .left {
-    float: left;
-}
-
-.navbar .content .right {
-    float: right;
-}*/
-
-.right a.button {
-    top: 0;
-    background: #FF9900;
-    box-sizing: border-box;
-    padding: 5px;
-    display: inline-block;
-    line-height: normal;
-    text-decoration: none;
-    color: rgba(0, 0, 0, 0.74);
-    border-radius: 3px;
-    margin: 4px;
-}
-
-.navbar .content .center {
-    display: flex;
-}
-
-.pselect, .nocon {
-    visibility: hidden;
-    opacity: 0;
-    transition: .5s ease;
-}
-
-.tooltip {
-    display: inline;
-    position: relative;
-}
-
-.tooltip:after {
-    bottom: 13px;
-    color: rgb(255, 255, 255);
-    content: attr(data-tooltip) '\279F';
-    display: block;
-    left: -240px;
-    position: absolute;
-    text-shadow: rgb(0, 0, 0) 0px 1px 0px;
-    white-space: nowrap;
-    font-size: 0.5em;
-    text-align: right;
-    line-height: 25px;
-    animation: helptip 7s 1 forwards;
-    -webkit-animation-delay: 4s;
-    -moz-animation-delay: 4s;
-    -o-animation-delay: 4s;
-    animation-delay: 4s;
-}
-
-.box {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    font-size: 30pt;
-    font-weight: 700;
-    float: left;
-}
-
-.box a, .box label {
-    text-decoration: none;
-    display: block;
-    height: 50px;
-    width: 50px;
-}
-
-/*.skins{*/
-/*margin: 0 0 0 -4px;*/
-/*}*/
-/*.skins input{*/
-/*display: none;*/
-/*}*/
-.console {
-    padding: 9px;
-    vertical-align: top;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    height: 50px;
-    border: none;
-    font-size: 20px;
-    width: 50px;
-    color: transparent;
-    outline: 0;
-    -webkit-filter: invert(0.97);
-    -moz-filter: invert(0.97);
-    filter: invert(0.97);
-    transition: .3s ease-out;
-    cursor: pointer;
-}
-
-.console:hover {
-    -webkit-filter: invert(0);
-    -moz-filter: invert(0);
-    filter: invert(0);
-}
-
-.console option {
-    color: black;
-    background: white;
-}
-
-.console.xbox, .console.xbox-old {
-    background: url('icons/xbx.png') no-repeat center;
-}
-
-.console.ps, .console.ds4 {
-    background: url('icons/psn.png') no-repeat center;
-}
-
-.console.nes {
-    background: url('icons/nes.png') no-repeat center;
-}
-
-.console.fpp {
-    background: url('icons/fpp.png') no-repeat center;
-}
-
-.console.fight-stick {
-    background: url('icons/fight-stick.png') no-repeat center;
-}
-
-.console.gc {
-    background: url('icons/gc.png') no-repeat center;
-}
-
-.console.n64 {
-    background: url('icons/n64.png') no-repeat center;
-}
-
-#color-picker {
-    display: inline-block;
-    width: 50px;
-    color: whitesmoke;
-    line-height: normal;
-}
-
-#color-picker i {
-    font-size: 42px;
-    transform: translateY(8%);
-}
-
-#color-picker-input {
-    transform: scale(0);
-}
-
-/*.box.xbx, .box.psn{*/
-/*background: #53BDFF;*/
-/*}*/
-/*.box.xbx label, .box.psn label{*/
-/*color: #5570B8;*/
-/*text-shadow: 0 1px 0 #90D4FF;*/
-/*}*/
-/*.box.psn label{*/
-/*line-height: 55px;*/
-/*font-size: 50px;*/
-/*}*/
-/*.box.xbx label{*/
-/*font-size: 17px;*/
-/*line-height: 53px;*/
-/*}*/
-/*.box.xbx label:hover, .box.xbx input:checked + label{*/
-/*background: forestgreen;*/
-/*color: white;*/
-/*text-shadow: none;*/
-/*}*/
-/*.box.psn label:hover, .box.psn input:checked + label{*/
-/*background: #252EAE;*/
-/*color: white;*/
-/*text-shadow: none;*/
-/*}*/
-span.code {
-    border-radius: 2px;
-    font-family: monospace;
-    padding: 2px;
-    background: lightgrey;
-    color: black;
-}
-
-.box .fa {
-    line-height: 50px;
-    display: block;
-}
-
-.help {
-    background: #53BDFF;
-    text-shadow: 0 1px 0 #90D4FF;
-}
-
-.help a {
-    color: #5570B8;
-}
-
-.thanks {
-    background: darkorange;
-    text-shadow: 0 1px 0 #FFC252;
-    font-size: 28pt;
-}
-
-.thanks a {
-    color: darkred;
-}
-
-.talk {
-    background: #9750ed;
-    text-shadow: 0 1px 0 #ba88e8;
-}
-
-.talk a {
-    color: darkslateblue;
-}
-
-.code {
-    background: #9750ed;
-    text-shadow: 0 1px 0 #ba88e8;
-    display: none;
-}
-
-.code a {
-    color: darkslateblue;
-}
-
-.twitch {
-    background: purple;
-    text-shadow: 0 1px 0 #f5f2f5;
-}
-
-.twitch a {
-    color: #e7e4e7;
-}
-
-.yt {
-    background: red;
-    text-shadow: 0 1px 0 #f5f2f5;
-}
-
-.yt a {
-    color: #e7e4e7;
-}
-
-.alert span {
-    color: #a85454;
-    display: block;
-    text-shadow: 0 1px 0 #ffa78b;
-
-}
-
-.hc {
-    width: 960px;
-    display: block;
-    margin: 0 auto;
-    -webkit-perspective: 1000;
-    -moz-perspective: 1000;
-    color: white;
-}
-
-.hc .content {
-    background: royalblue;
-    box-sizing: border-box;
-    padding: 15px;
-}
-
-/*#help{
-    -webkit-transform: rotateX(-100deg);
-    -webkit-backface-visibility: hidden;
-    -moz-transform: rotateX(-100deg);
-    -moz-backface-visibility: hidden;
-    -moz-transform-origin: top;
-    transform: rotateX(-100deg);
-    backface-visibility: hidden;
-    transform-origin: top;
-    -webkit-transform-origin: top;
-    transition: transform .3s ease;
-    transition: -webkit-transform .3s ease;
-    visibility: hidden;
-    position: absolute;
-    margin: 0 auto;
-
-}
-#help:target{
-    -webkit-transform: rotateX(0deg);
-    -moz-transform: rotateX(0deg);
-    transform: rotateX(0deg);
-    transition: -webkit-transform 2s ease;
-    transition: transform 2s ease;
-    transform-origin: top;
-    -moz-transform-origin: top;
-    -webkit-transform-origin: top;
-    visibility: visible;
-    position: relative;
-    margin: 0 auto;
-}*/
-.ac {
-
-}
-
-.title {
-    width: 100%;
-    line-height: normal;
-    font-size: 40px;
-    margin-bottom: 15px;
-}
-
-.title h1 {
-    float: left;
-}
-
-.title .close {
-    float: right;
-    margin: 8px;
-}
-
-.title .close a {
-    text-decoration: none;
-    font-size: 19pt;
-    width: 25px;
-    height: 25px;
-    display: inline-block;
-    position: relative;
-    top: 4px;
-    line-height: 100%;
-    background: red;
-    text-align: center;
-    border-radius: 25px;
-    font-weight: 700;
-    color: white;
-}
-
-.column {
-    width: 30%;
-    float: left;
-    padding-right: 45px;
-}
-
-.column.last {
-    padding: 0;
-}
-
-.overflow {
-    position: fixed;
-    width: 100%;
-    top: 50px;
-    z-index: 1;
-}
-
-.text {
-    margin-bottom: 5px;
-}
-
-.text ol {
-    display: block;
-    list-style: decimal inside;
-}
-
-.text li {
-    padding: 0 0px 5px 0px;
-}
-
-.changelog ul {
-    list-style: disc inside;
-    margin-left: 1em;
-    text-indent: -1em;
-}
-
-.changelog ul li {
-    padding: 4px 12px;
-}
-
-.log {
-    margin-bottom: 5px;
-    transition: opacity .4s ease-out;
-}
-
-.log:not(:first-child) {
-    opacity: .5;
-}
-
-.log:hover {
-    opacity: 1;
-}
-
-.log code {
-    font-family: "Consolas", monospace;
-    white-space: pre-line;
-}
-
-.player {
-    background: white;
-    padding: 9px;
-    vertical-align: top;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    height: 50px;
-    border: none;
-    font-size: 25px;
-    outline: 0;
-    cursor: pointer;
-}
-
-.ty {
-    background: green;
-    z-index: 11;
-    display: none;
-    border-bottom: 1px solid darkgreen;
-}
-
-.uc {
-    background: orange;
-    z-index: 11;
-    border-bottom: 1px solid darkorange;
-    display: none;
-}
-
-.update {
-    background: darkred;
-    z-index: 11;
-    border-bottom: 1px solid rgb(125, 0, 0);
-    display: none;
-}
-
-.message {
-    display: block;
-    -webkit-animation: messagefade 6s forwards;
-    -moz-animation: messagefade 6s forwards;
-    animation: messagefade 6s forwards;
-}
-
-.message span {
-    width: 100%;
-}
-
-/*
-Help Box Stuff
-.changelog::-webkit-scrollbar
-{
-    width: 22px;  !* for vertical scrollbars *!
-    height: 12px; !* for horizontal scrollbars *!
-}
-
-.changelog::-webkit-scrollbar-track
-{
-    !*background: rgba(0, 0, 0, 0.1);*!
-    !*border-radius: 12px;*!
-    !*box-shadow: inset 1px 1px 12px rgba(0, 0, 0, 0.28);*!
-}
-
-.changelog::-webkit-scrollbar-thumb
-{
-    background: linear-gradient(to right, rgba(54, 58, 65, 0.2) 0%,rgba(0,0,0,0.3) 100%);
-    border-radius: 12px;
-    border: 4px solid transparent;
-    background-clip: padding-box;
-}
-*/
-/*.info {
-    display: block;
-    background: #75bbfd;
-    font-size: 13pt;
-    padding: 12px;
-    vertical-align: text-bottom;
-    color: black;
-}
-.info span:before {
-    content: "INFO";
-    padding: 2px 6px;
-    border: solid #95d0fc 2px;
-    margin: 0 6px 0 0;
-    font-weight: 700;
-    border-radius: 3px;
-}
-.warning {
-    display: block;
-    background: darkred;
-    font-size: 13pt;
-    padding: 12px;
-    vertical-align: text-bottom;
-}
-.warning span:before {
-    content: "WARNING";
-    padding: 2px 6px;
-    background: red;
-    margin: 0 6px 0 0;
-    font-weight: 700;
-    border-radius: 3px;
-}
-.info span, .warning span {
-    text-align: center;
-    display: block;
-}*/
-
-/*CSS Slideout Menu*/
-a .menu-button {
-    color: white;
-    font-size: 36px;
-    vertical-align: text-bottom;
-    -webkit-transform: scaleX(0.75);
-    -moz-transform: scaleX(0.75);
-    transform: scaleX(0.75);
-}
-
-a:active .menu-button {
-    -webkit-filter: invert(100%);
-    filter: invert(100%);
-}
-
-.slideout-menu {
-    z-index: 13;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    visibility: hidden;
-    transition: all .5s;
-    transition-delay: .1s;
-    transition-timing-function: cubic-bezier(0.27, 1.29, 0.63, 1);
-}
-
-.slideout-menu:target {
-    visibility: visible;
-}
-
-.slideout-menu:target .menu {
-    transform: translateX(0px);
-    box-shadow: black -1px 0 10px;
-}
-
-.slideout-menu:target .modal-bg {
-    transition-delay: 0s;
-    transition-duration: .5s;
-}
-
-.menu {
-    width: 400px;
-    height: 100%;
-    background: whitesmoke;
-    position: absolute;
-    transition: transform cubic-bezier(0.4, 0, 0.2, 1) .4s;
-    transform: translateX(-400px);
-    display: flex;
-    flex-direction: column;
-}
-
-.yt-contain {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-
-}
-
-.yt-contain iframe, .yt-contain object, .yt-contain embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-/*Twitch Video Tooltip*/
-/*.menu .yt-contain:before, .yt-contain:after{
-    display: block;
-    visibility: hidden;
-    z-index: 10;
-    position: fixed;
-    white-space: pre-line;
-    transform: translateX(-20px);
-    transition: transform .3s ease-out, opacity .3s ease-out;
-    opacity: 0;
-}
-
-.menu .yt-contain:hover:after, .yt-contain:hover:before{
-    transform: translateX(-5px);
-    visibility: visible;
-    opacity: 1;
-}
-.menu .yt-contain:after {
-    content: "Upsilon Pi Epsilon @ FIU is hosting a Super Smash Bros. tournament on Friday, October 28th at 6pm EST. \AHope to see you in chat!";
-    width: 200px;
-    text-align: center;
-    padding: 8px 8px 8px 8px;
-    color: whitesmoke;
-    right: -240px;
-    top: 120px;
-    border-radius: 5px;
-    background: rgba(0,0,0,.7);
-}
-.menu .yt-contain:before{
-    content: "";
-    width: 0px;
-    height: 0;
-    top: 160px;
-    right: -24px;
-    border-style: solid;
-    border-width: 13px 15px 13px 0px;
-    border-color: transparent rgba(0,0,0,.7) transparent transparent;
-    box-sizing: border-box;
-}*/
-
-
-.menu ul {
-    height: calc(100% - 50px);
-    overflow-y: auto;
-}
-
-.menu .yt-contain + ul {
-    height: calc(100% - 275px);
-}
-
-.menu a {
-    /* vertical-align: baseline; */
-    display: block;
-    padding: 10px;
-    font-size: 26px;
-    text-decoration: none;
-    color: rgba(0, 0, 0, 0.65);
-    transition: background ease .5s;
-}
-
-.menu li span {
-    vertical-align: top;
-}
-
-.menu i {
-    font-size: 28px;
-    margin-right: 4px;
-}
-
-.menu h1 {
-
-    font-size: 30px;
-    padding: 10px;
-    background: darkred;
-    color: floralwhite;
-    padding-left: 64px;
-}
-
-.menu h1 i.material-icons {
-    font-size: 48px;
-    position: absolute;
-    left: 10px;
-    top: 2px;
-}
-
-.menu {
-    /*position: relative;*/
-}
-
-.menu .divider {
-    border-bottom: 1px solid gray;
-    margin: 10px 50px;
-}
-
-.menu a:hover {
-    background: rgba(0, 0, 0, 0.20);
-}
-
-/* CSS Modals */
-.modal-container {
-    /*background: rgba(0, 0, 0, 0);*/
-    z-index: 13;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    visibility: hidden;
-    transition: all .5s;
-    transition-delay: .1s;
-    transition-timing-function: cubic-bezier(0.27, 1.29, 0.63, 1);
-    overflow: hidden;
-}
-
-.modal-container:target {
-    visibility: visible;
-    /*background: rgba(0, 0, 0, 0.61);*/
-}
-
-.modal-container:target .modal {
-    opacity: 1;
-    transform: scale(1) rotateX(0deg) translateY(0%);
-    /*animation: modal-flow .5s;*/
-    /*animation-timing-function: cubic-bezier(0.27, 1.29, 0.63, 1);*/
-
-}
-
-.modal-bg {
-    background: rgba(0, 0, 0, 0);
-    transition: all .5s cubic-bezier(0.27, 1.29, 0.63, 1) .1s;
-    width: 100%;
-    height: 100%;
-}
-
-.bglink {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    cursor: default;
-}
-
-.modal-container:target .modal-bg, .slideout-menu:target .modal-bg {
-    background: rgba(0, 0, 0, 0.61);
-}
-
-.modal {
-    width: 870px;
-    /*height: calc(100% - 100px);*/
-    max-height: calc(100% - 100px);
-    min-height: 415px;
-    display: flex;
-    flex-flow: column;
-    background: whitesmoke;
-    margin: 40px auto 0 auto;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    opacity: 0;
-    transform: scale(1.4) rotateX(60deg) translateY(-100%);
-    transform-origin: center -70px;
-    transition: all .7s cubic-bezier(0.27, 1.29, 0.63, 1) .1s, opacity 100ms ease .1s;
-    /*animation: modal-flow .5s reverse;*/
-    /*animation-timing-function: cubic-bezier(0.27, 1.29, 0.63, 1);*/
-}
-
-.modal article {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 18px;
-    overflow-y: auto;
-    flex: 1 1 auto;
-}
-
-/* Unnecessary fix since this flexbox bug has been fixed
-
-.modal article > :first-child {
-    margin-top: 18px;
-}
-
-.modal article > :last-child {
-    margin-bottom: 18px;
-}*/
-
-.modal h1 {
-    font-size: 3em;
-}
-
-.modal a.close {
-    float: right;
-    display: inline-block;
-    text-align: center;
-    font-size: 3em;
-    width: 1em;
-    text-decoration: none;
-    color: white;
-    border-radius: 3em;
-    text-shadow: rgba(0, 0, 0, 0.45) 0px 1px 3px;
-}
-
-.modal a.close:active, .modal a.close:hover {
-    -webkit-filter: invert(100%);
-    filter: invert(100%);
-}
-
-.modal .codeblock {
-    font-family: "Consolas", monospace;
-    background: lightgrey;
-    color: darkgoldenrod;
-    word-wrap: break-word;
-    border-radius: 5px;
-    border: 1px solid hsla(0, 0%, 77%, 1);
-    text-shadow: rgba(0, 0, 0, 0.44) 0 0 .1px;
-}
-
-.modal p {
-    margin-bottom: 15px;
-}
-
-.modal .minimenu {
-    position: absolute;
-    width: 100%;
-    box-sizing: border-box;
-    background: rgba(0, 0, 0, 0.25);
-}
-
-.modal .minimenu li {
-    height: 100%;
-    display: table-cell;
-}
-
-.modal .minimenu li:hover, .modal .minimenu .selected {
-    background: rgba(0, 0, 0, 0.25);
-}
-
-.modal .minimenu a {
-    color: whitesmoke;
-    padding: 7px 8px;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.modal .minimenu + header {
-    background: deepskyblue;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 35px 2% 2%;
-    flex: 0 0 100px;
-}
-
-#about .video {
-    float: right;
-    width: 50%;
-    margin-left: 10px;
-}
-
-.info {
-    clear: both;
-}
-
-.info div {
-    width: 50%;
-    box-sizing: border-box;
-}
-
-.info ol {
-    list-style: decimal inside;
-}
-
-.info ol li {
-    margin-bottom: 5px;
-}
-
-.info div:nth-of-type(1) {
-    float: left;
-    padding-right: 1%;
-
-}
-
-.info div:nth-of-type(2) {
-    float: right;
-    padding-left: 1%;
-}
-
-.form-group {
-    margin-bottom: 8px;
-    font-size: 32px;
-    position: relative;
-}
-
-.form-group [id*=-input] {
-    float: right;
-    width: 535px;
-    padding: 0px;
-    border: none;
-    background: transparent;
-    border-bottom: rgba(0, 0, 0, 0.34) 1px solid;
-    text-align: center;
-    transition: border-bottom 0.2s ease-in;
-    font-size: 29px;
-}
-
-.form-group [id*=-input]:focus {
-    border-bottom: black 1px solid;
-    outline: none;
-}
-
-#url-form .form-group [type=checkbox]:before {
-    content: "Disabled";
-    color: lightgray;
-    display: block;
-    position: absolute;
-    cursor: pointer;
-    width: 535px;
-    text-align: center;
-    background: rgba(255, 0, 0, .8);
-    border-radius: 3px;
-    right: -3px;
-}
-
-#url-form .form-group [type=checkbox]:checked:before {
-    content: "Enabled";
-    background: rgba(0, 110, 0, .8);
-}
-
-#url-form .form-group [type=checkbox] {
-    width: 0;
-    height: 0;
-    position: relative;
-}
-
-#url-form .form-group .flipped[type=checkbox]:before {
-    content: "Enabled";
-    background: rgba(0, 110, 0, .8);
-}
-
-#url-form .form-group .flipped[type=checkbox]:checked:before {
-    content: "Disabled";
-    background: rgba(255, 0, 0, .8);
-}
-
-.form-group .input-unit {
-    position: absolute;
-    right: 0;
-}
-
-.form-group .input-unit + [id*=-input] {
-    width: 474px;
-    padding-right: 60px;
-}
-
-#docs h2 {
-    margin-bottom: 15px;
-}
-
-#docs h2:after {
-    content: attr(data-param);
-    margin-left: 5px;
-    padding: 3px;
-    font-family: "Consolas", monospace;
-    background: lightgrey;
-    color: darkgoldenrod;
-    word-wrap: break-word;
-    border-radius: 5px;
-    border: 1px solid hsla(0, 0%, 77%, 1);
-    text-shadow: rgba(0, 0, 0, 0.44) 0 0 .1px;
-}
-
-#docs .definition, #docs .definition ul {
-    margin-bottom: 15px;
-}
-
-#docs .definition ul li {
-    margin-bottom: 4px;
-}
-
-#docs .definition div.codeblock {
-    padding: 10px;
-    margin-bottom: 15px;
-}
-
-#docs .definition li:before {
-    content: '\2012';
-    margin-right: 4px;
-}
-
-#docs .definition li:nth-child(1):before {
-    content: "UNIT: ";
-    font-weight: bold;
-}
-
-#docs .definition li:nth-child(2):before {
-    content: "DEFAULT VALUE: ";
-    font-weight: bold;
-}
-
-#docs .definition li:nth-child(3):before {
-    content: "ACCEPTABLE VALUES: ";
-    font-weight: bold;
-}
-
-.generator-container {
-    margin-top: 18px;
-    margin-bottom: 20px;
-}
-
-#generate-page {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-#generate-area {
-    display: flex;
-    flex-direction: row;
-    gap: 18px
-}
-
-#generated-url {
-    font-size: 20pt;
-    padding: 18px;
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    width: 80%;
-}
-
-#url-generate-reset {
-    font-size: 20pt;
-    padding: 18px;
-    cursor: pointer;
-}
-
-#url-generate-reset span {
-    text-align: center;
-    display: block;
-}
-
-.raw-outputs {
-    display: none;
-}
-
-.raw-outputs.active {
-    display: block;
-}
-
-.raw-outputs li {
-    display: inline-block;
-    min-width: 40px;
-    text-align: right;
-    padding: 20px 5px 5px 10px;
-    background: deepskyblue;
-    box-sizing: border-box;
-    position: relative;
-    margin: 0 5px 5px 0;
-    opacity: .6;
-}
-
-.raw-outputs li.disabled {
-    background: orangered;
-}
-
-.raw-outputs li:before {
-    content: attr(data-shortname);
-    font-size: 15px;
-    font-weight: bold;
-    color: white;
-    position: absolute;
-    top: 3px;
-    left: 4px;
-}
-
-#mapping-config .form-group {
-    font-size: 20px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#mapping-config #mappings select {
-    font-size: inherit;
-}
-
-#mapping-config #mappings .form-group > select {
-    display: none;
-}
-
-#mapping-config #mappings button {
-    flex-grow: 1;
-    margin: 0 5px 0px 14px;
-    transition: .4s ease-out;
-    position: relative;
-}
-
-#mapping-config #mappings .form-group > button + button {
-    display: none;
-    margin: 0 5px 0px 0px;
-}
-
-#mapping-config #mappings [data-tooltip]:after {
-    opacity: 0;
-    content: attr(data-tooltip);
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    pointer-events: none;
-    background: orangered;
-    color: white;
-    padding: 4px;
-    border-radius: 23px;
-    transition: .3s ease-out;
-    white-space: nowrap;
-}
-
-#mapping-config .template {
-    display: none;
-}
-
-#mapping-config .map-control {
-    font-size: 24px;
-    padding-bottom: 10px;
-    text-decoration: none;
-    display: inline-block;
-    color: black;
-}
-
-#mapping-config .map-control i {
-    vertical-align: top;
-}
-
-#mapping-help.map-control {
-    float: right;
-}
-
-#mapping-help.map-control:after {
-    display: block;
-    clear: both;
-}
-
-#mapping-config .form-group .material-icons {
-    color: black;
-    transition: .4s ease-out;
-    opacity: .5;
-    text-decoration: none;
-    font-size: 37px;
-    line-height: normal;
-    vertical-align: bottom;
-}
-
-#mapping-config .form-group .material-icons:hover {
-    opacity: 1;
-}
-
-#mapping-config .add-config:hover {
-    color: green;
-}
-
-#mapping-config .del-config:hover {
-    color: red;
-}
-
-#mapping-config input[type=radio], #mapping-config .disable-item {
-    margin-right: 70px;
-    display: inline-block;
-    width: 0px;
-    height: 23px;
-    font-size: inherit;
-    opacity: .5;
-    transition: .4s ease-out;
-}
-
-#mapping-config input[type=radio][value=axes] {
-    margin-right: 50px;
-}
-
-#mapping-config input[type=radio][value="dpad"] {
-    margin-right: 36px;
-}
-
-#mapping-config select{
-    margin-left: 6px;
-}
-
-#mapping-config input[type=radio]:checked, #mapping-config .disable-item:checked {
-    opacity: 1;
-}
-
-#mapping-config #mappings .disable-item:checked ~ button {
-    opacity: .5;
-    pointer-events: none;
-
-}
-
-#mapping-config input[value="buttons"]:after, #mapping-config input[value="axes"]:after, #mapping-config input[value="dpad"]:after, #mapping-config .disable-item:after {
-    display: inline-block;
-    background: orangered;
-    color: white;
-    padding: 5px;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-#mapping-config input[value="buttons"]:after {
-    content: "Button";
-}
-
-#mapping-config input[value="axes"]:after {
-    content: "Axis";
-}
-
-#mapping-config input[value="dpad"]:after {
-    font-family: "Material Icons";
-    content: "gamepad";
-    font-size: 23px;
-}
-
-#mapping-config .disable-item:after {
-    content: "Disable";
-}
-
-#mapping-config .axes-config:after {
-    font-family: inherit;
-    content: "check_box_outline_blank";
-    line-height: inherit;
-    cursor: pointer;
-}
-
-#mapping-config .axes-config:checked:after {
-    content: "check_box";
-}
-
-#mapping-config .axes-config {
-    width: 37px;
-    height: 0;
-    padding: 0;
-    margin: 0;
-    outline: none;
-}
-
-#mapping-config .axes-config:checked {
-    opacity: 1;
-}
-
-#mapping-config .axes-config {
-    order: -1;
-}
-
-#mapping-config #mappings input[value="buttons"]:checked ~ select[name="buttons"], #mapping-config #mappings input[value="axes"]:checked ~ select[name="axes"] {
-    display: inline-block;
-}
-
-#mapping-config #mappings .fix-panel {
-    display: none;
-    width: 100%;
-    margin-top: 5px;
-    font-size: 20px;
-}
-
-#mapping-config #mappings .fix-panel span {
-    line-height: 37px;
-    margin-right: 5px;
-    font-size: inherit;
-}
-
-#mapping-config #mappings .fix-axes, #mapping-config #mappings .fix-dpad li{
-    height: 37px;
-}
-
-#mapping-config #mappings .fix-dpad li{
-    display: flex;
-    margin-bottom: 5px;
-    justify-content: flex-end;
-}
-
-#mapping-config #mappings .fix-dpad{
-    flex-direction: column;
-}
-
-#mapping-config #mappings .fix-dpad button {
-    max-width: 655px;
-}
-
-#mapping-config #mappings .axes-config:checked ~ .fix-axes, #mapping-config #mappings input[type=radio][value=dpad]:checked ~ .fix-dpad{
-    display: flex;
-}
-
-#mapping-config #mappings .axes-config:checked ~ button:nth-of-type(2) {
-    display: none !important;
-}
-
-#mapping-config #mappings input[value="dpad"]:checked ~ .axes-config, #mapping-config #mappings input[value="dpad"]:checked ~ .fix-axes{
-    display: none;
-}
-
-#mapping-config #mappings input[value="axes"]:checked ~ .axes-config:not(:checked) ~ [data-tooltip]:hover:after, #mapping-config #mappings .fix-axes [data-tooltip]:hover:after {
-    opacity: 1;
-    top: -28px;
-}
-
-#mapping-config #mappings input[value="axes"]:checked ~ button:nth-of-type(2) {
-    display: block;
-}
-
-#mapping-config #mappings .map-message {
-    width: 100%;
-    display: none;
-    order: -2;
-    background: darkgreen;
-    color: #F2F2F2;
-    padding: 5px;
-    border-radius: 3px;
-    margin-bottom: 5px;
-}
-
-#mapping-config #mappings .map-message.error {
-    display: block;
-    background: hsla(0,86%,50%,1);
-}
-
-#mapping-config #mappings .map-message.success{
-    display: block;
-    animation: 4s msg-animation forwards;
-}
-
-#mapping-config .button-group button {
-    float: right;
-    font-size: 20px;
-    padding: 5px;
-    border-radius: 3px;
-    background: orangered;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-#mappings:empty + div {
-    display: none;
-}
-
-#showcase .preview iframe {
-    width: 100%;
-    height: 100%;
-}
-
-#showcase .preview {
-    height: 150px;
-    width: 200px;
-    float: left;
-    margin-right: 10px;
-}
-
-#showcase .description {
-
-}
-
-#adoptaskin p {
-    margin-bottom: 8px;
-}
-
-#adoptaskin article ul {
-    list-style: inside disc;
-    margin: 0 0 8px 10px;
-}
-
-#adoptaskin article ul li:not(:last-of-type) {
-    margin-bottom: 4px;
-}
-
-#adoptaskin #skin-tc {
-    color: white;
-    text-align: center;
-    width: 100%;
-    display: block;
-    background: crimson;
-    padding: 10px;
-    box-sizing: border-box;
-    text-decoration: none;
-    border-radius: 4px;
-}
-
-#contact-form input, #contact-form textarea, #contact-form select {
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 30px;
-    padding: 10px;
-    font-family: inherit;
-}
-
-#contact-form textarea {
-    min-height: 200px;
-}
-
-#contact-form .g-recaptcha {
-    float: left;
-}
-
-#contact-form .button-group {
-    float: right;
-}
-
-#contact-form .button-group button {
-    background: tomato;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    height: 78px;
-    font-size: 30px;
-    padding: 0px 50px;
-    border-radius: 4px;
-    color: white;
-    margin-left: 10px;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 4px 1px;
-}
-
-#contact-form .button-group button:disabled {
-    opacity: 0.5;
-}
-
-#messages {
-    background: orangered;
-    border-radius: 3px;
-    padding: 10px;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-    color: white;
-}
-
-#messages p {
-    padding: 0px;
-    margin: 0px;
-}
-
-#messages ul {
-    list-style: inside disc;
-}
-
-#messages ul li {
-    margin-bottom: 4px
-}
-
-#messages.success {
-    background: #006b00;
-}
-
-#messages:empty {
-    display: none;
-}
-
-#donate article {
-    display: flex;
-    flex-direction: row;
-}
-
-#donate .donate-buttons {
-    flex: 0 0 250px;
-    display: flex;
-    flex-direction: column;
-    margin-left: 10px;
-}
-
-#donate .donate-buttons a {
-    text-decoration: none;
-    margin: 0.7%;
-}
-
-#donate .donate-buttons .dbutton {
-    text-align: center;
-    box-sizing: border-box;
-    padding: 12px;
-    border-radius: 3px;
-}
-
-#donate .dbutton .fa {
-    margin-right: 5px;
-}
-
-#donate .pp.dbutton {
-    background: #009CDE;
-    color: black;
-}
-
-#donate .btc.dbutton {
-    background: yellowgreen;
-    color: black;
-}
-
-#donate .amzn.dbutton {
-    background: #FF9900;
-    color: black;
-}
-
-/* Survey Beg Box */
-.plshalpme {
-    display: none;
-}
-
-.disconnected[id*=gamepad-] .plshalpme {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: darkred;
-}
-
-.disconnected[id*=gamepad-] .plshalpme div {
-    display: block;
-    /* margin: 0 auto; */
-    /* width: 238px; */
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    color: whitesmoke;
-    font-size: 68px;
-    left: 50%;
-}
-
-.disconnected[id*=gamepad-] .plshalpme a {
-    color: whitesmoke;
-    text-decoration: none;
-}
-
-/*Generic Classes*/
-.active {
-    display: block;
-}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GamePad Viewer - The Official Controller Display & Tester</title>
+    <link rel="icon" type="image/png" href="app-icon.png" />
+    <link rel="stylesheet" type="text/css" href="reset.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900&subset=latin,latin-ext'
+        rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css" rel="stylesheet">
+    <script type="text/javascript" src="queue.js"></script>
+    <script type="text/javascript" src="gamepad.js"></script>
+    <script type="text/javascript" src="tester.js"></script>
+    <!--<script type="text/javascript" src="msgpack.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.5.5/dist/clipboard.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script type="text/javascript" src="form.js"></script>
+    <style type="text/css" id="custom-css"></style>
+    <style type="text/css" id="css-preview"></style>
+    <meta property="og:title" content="GamePad Viewer - The Official Controller Display & Tester" />
+    <meta name="google-site-verification" content="-0vAfpCPiEyZGlmxBu3yY7G4c_nDRa-jjxFPaIqTze4" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gamepadviewer.com" />
+    <meta property="og:image" content="http://gamepadviewer.com/app-icon.png" />
+    <meta property="og:description"
+        content="Show your gamepad input live on Twitch and upgrade your experience with personalized controller skins!" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@gamepadviewer">
+    <meta name="twitter:creator" content="@mrmcpowned">
+    <meta name="twitter:image" content="https://gamepadviewer.com/twittercard.gif">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20916585-6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-20916585-6');
+    </script>
+
+    <!-- Google tag (gtag.js) - GA4 Property -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CRLGW2C0DH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-CRLGW2C0DH');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6461293058804731"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="navbar ty hide-me" id="thanks">
+        <div class="content">
+            <span>Thank you so much for donating! You're awesome!</span>
+        </div>
+    </div>
+    <div class="navbar update message hide-me">
+        <div class="content">
+            <span>New in this version: <a
+                    href="https://obsproject.com/forum/resources/gamepad-display.3/update?update=557">custom
+                    CSS skinning!</a></span>
+        </div>
+    </div>
+
+    <div class="navbar hide-me">
+        <div class="content">
+            <div class="left">
+                <a href="#menu">
+                    <i class="material-icons menu-button">menu</i>
+                </a>
+            </div>
+            <div class="center pselect">
+                <div class="left">
+                    <span>Currently Viewing: </span>
+                    <select class="player">
+                        <option>None</option>
+                        <option value="gamepad-0">Player 1</option>
+                        <option value="gamepad-1">Player 2</option>
+                        <option value="gamepad-2">Player 3</option>
+                        <option value="gamepad-3">Player 4</option>
+                    </select>
+                </div>
+                <ul class="left skins">
+                    <select class="console" id="cselect">
+                        <option value="xbox">Xbox One</option>
+                        <option value="xbox white">Xbox One (White)</option>
+                        <option value="xbox-old">Xbox 360</option>
+                        <option value="ps">PlayStation 3</option>
+                        <option value="ps white">PlayStation 3 (White)</option>
+                        <option value="ds4">PlayStation 4</option>
+                        <option value="ds4 white">PlayStation 4 (White)</option>
+                        <option value="gc">GameCube</option>
+                        <option value="fpp">FightPad Pro</option>
+                        <option value="fight-stick">Fight Stick</option>
+                        <option value="nes">NES</option>
+                        <option value="n64">Nintendo 64</option>
+                    </select>
+                </ul>
+                <a href="#" id="color-picker" class="left"><i class="material-icons">color_lens</i></a>
+                <input type="color" id="color-picker-input" value="#8B4513">
+            </div>
+            <div class="right">
+                <a href="https://forms.gle/qhKAKSdxnMQwcR2e8" class="button">Feedback</a>
+                <a href="https://discord.gg/0SdzYaRROBqfdd0v" target="_blank"
+                    style="background: mediumpurple; color: white; border: 1px solid whitesmoke"
+                    class="button">Discord</a>
+            </div>
+        </div>
+    </div>
+    <div class="navbar nocon hide-me">
+        <div class="content">
+            <div class="left">
+                <ul>
+                    <li class="box alert">
+                        <span><i class="fa fa-exclamation-circle"></i></span>
+                    </li>
+                </ul>
+                <span>There are currently no gamepads connected. Press any button to enable...</span>
+            </div>
+            <span class="clear"></span>
+        </div>
+    </div>
+
+    <div class="slideout-menu hide-me" id="menu">
+        <a class="bglink" href="#">
+            <div class="modal-bg"></div>
+        </a>
+
+        <div class="menu">
+            <h1><i class="material-icons">videogame_asset</i> Gamepad Viewer</h1>
+
+            <div class="yt-contain">
+                <iframe src="https://www.youtube.com/embed/_jdupqY9oxM" frameborder="0" allowfullscreen=""></iframe>
+                <!--<iframe src="https://player.twitch.tv/?channel=upefiu&muted=true" frameborder="0" scrolling="no"></iframe>-->
+            </div>
+            <!-- GPV Classic - Menu -->
+            <ins class="adsbygoogle" style="display:inline-block;max-width: 400px;width: 100%;height: 90px;"
+                data-ad-client="ca-pub-6461293058804731" data-ad-slot="7714411903"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            <ul>
+                <li><a href="#about"><i class="material-icons">info_outline</i><span>Info</span></a>
+                </li>
+                <li><a href="#faq"><i class="material-icons">help_outline</i><span>FAQ</span></a>
+                </li>
+                <li><a href="#docs"><i class="material-icons">insert_drive_file</i><span>Docs</span></a>
+                </li>
+                <li><a href="#log"><i class="material-icons">new_releases</i><span>Changelog</span></a>
+                </li>
+                <li><a href="#generate"><i class="material-icons">link</i><span>Generate URL</span></a>
+                </li>
+                <li><a href="#remap"><i class="material-icons">gamepad</i><span>Remap Buttons</span></a>
+                </li>
+                <!--            <li><a href="#showcase"><i class="material-icons">style</i><span>Skin Showcase</span></a>
+                        </li>-->
+                <!--<li><a href="#adoptaskin"><i class="material-icons">loyalty</i><span>Adopt a Skin</span></a></li>-->
+                <li><a href="#contact"><i class="material-icons">contact_mail</i><span>Contact</span></a>
+                </li>
+                <li><a href="#donate"><i class="material-icons">stars</i><span>Donate</span></a>
+                </li>
+                <li class="divider">
+                </li>
+                <li><a href="https://discord.gg/0SdzYaRROBqfdd0v" target="_blank"><i
+                            class="material-icons">chat</i><span>Discord Server</span></a>
+                </li>
+                <li><a href="https://trello.com/b/aSUJ68Km/gamepad-viewer-roadmap" target="_blank"><i
+                            class="material-icons">view_carousel</i><span>Trello Board</span></a>
+                </li>
+                <li><a href="https://twitch.tv/mrmcpowned" target="_blank"><i
+                            class="material-icons">live_tv</i><span>Twitch</span></a>
+                </li>
+                <li><a href="https://youtube.com/mrmcpowned" target="_blank"><i
+                            class="material-icons">subscriptions</i><span>YouTube Channel</span></a>
+                </li>
+                <li><a href="https://obsproject.com/forum/threads/gamepad-display.12508" target="_blank"><i
+                            class="material-icons">forum</i><span>OBS Forums</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modals" class="hide-me">
+        <div id="modal-template" class="modal-container">
+            <a class="bglink" href="#">
+                <div class="modal-bg"></div>
+            </a>
+
+            <div class="modal">
+                <header class="minimenu">
+                    <!--Nuke everything in here when copying-->
+                    <ul>
+                        <li><a href="#about">Info</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#docs">Docs</a></li>
+                        <li><a href="#log">Changelog</a></li>
+                        <li><a href="#generate">Generate URL</a></li>
+                        <li><a href="#remap">Remap Buttons</a></li>
+                        <!--<li><a href="#showcase">Skin Showcase</a></li>-->
+                        <!--<li><a href="#adoptaskin">Adopt a Skin</a></li>-->
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#donate">Donate</a></li>
+                    </ul>
+                </header>
+                <header>
+                    <a class="close" href="#">&times;</a>
+
+                    <h1>Parameters List</h1>
+                </header>
+                <article>
+                    <p>Ayyy</p>
+                </article>
+            </div>
+        </div>
+        <div id="about" class="modal-container">
+            <a class="bglink" href="#">
+                <div class="modal-bg"></div>
+            </a>
+
+            <div class="modal">
+                <header class="minimenu">
+                </header>
+                <header>
+                    <a class="close" href="#">&times;</a>
+
+                    <h1>Info & About</h1>
+                </header>
+                <article>
+                    <h2>About this tool</h2>
+
+                    <div class="video">
+                        <div class="yt-contain">
+                            <iframe src="https://www.youtube.com/embed/XZLBh5yul6I" frameborder="0"
+                                allowfullscreen=""></iframe>
+
+
+                        </div>
+                    </div>
+
+                    <p>I started out making this tool because I found that all the alternatives to display gamepad input
+                        were too much of a hassle to set up or simply weren't customizable enough to my liking. After a
+                        while, I realized that other people could benefit from the tool I made, and ever since I've been
+                        updating and extending the original features. I started out with only the Xbox 360 skin and
+                        since
+                        then I've added several skins, the ability to create custom skins, scaling, input delay and many
+                        more features.
+                    </p>
+
+                    <p>Thankfully, this is all possible due to <a href="http://aresluna.org" target="_blank">Marcin
+                            Wichary's</a> <a
+                            href="https://github.com/html5rocks/www.html5rocks.com/blob/master/content/tutorials/doodles/gamepad/static/gamepad-tester/gamepad.js"
+                            target="_blank">Gamepad.js</a> and <a
+                            href="https://github.com/html5rocks/www.html5rocks.com/blob/master/content/tutorials/doodles/gamepad/static/gamepad-tester/tester.js"
+                            target="_blank">Tester.js</a> libraries, which I've modified for my own purposes.
+                    </p>
+
+                    <div class="info">
+                        <div>
+                            <h2>Chroma Key Installation</h2>
+                            <ol>
+                                <li>Create new window capture source</li>
+                                <li>Select the window with the gamepad viewer</li>
+                                <li>Enable "Color Key"</li>
+                                <li>Next to "Color" click the "Select" button and use the eyedropper tool to select the
+                                    brown background on the page
+                                </li>
+                                <li>Set the "Similarity" and "Blend" to your desired values</li>
+                                <li>Enable "Sub-Region"</li>
+                                <li>Click on "Select Region" and shrink the region box to the desired size</li>
+                                <li>Click "OK" and you're done!</li>
+                            </ol>
+                        </div>
+                        <div>
+                            <h2>CLR Browser Installation</h2>
+                            <ol>
+                                <li>Head to the <a href="#generate">URL Generator</a> to create your own gamepad URL
+                                </li>
+                                <li>Click on the generated preview URL to copy it</li>
+                                <li>In OBS, create a new CLR Browser source</li>
+                                <li>Paste the copied URL in the "URL" text box in the browser source</li>
+                                <li>The width and height will require playing around with inorder to get the right
+                                    values,
+                                    so simply work your way up or down from the default values the source already has
+                                    set
+                                </li>
+                                <li>Click "OK" and you're done!</li>
+                            </ol>
+                        </div>
+                        <span class="clear"></span>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div id="faq" class="modal-container">
+            <a class="bglink" href="#">
+                <div class="modal-bg"></div>
+            </a>
+
+            <div class="modal">
+                <header class="minimenu">
+                </header>
+                <header>
+                    <a class="close" href="#">&times;</a>
+
+                    <h1>Frequently Asked Questions</h1>
+                </header>
+                <article>
+                    <section>
+                        <h2>What exactly is this?</h2>
+
+                        <p>This is a web-based tool used for representing gamepad input visually. You basically get to
+                            see
+                            what you're doing with your gamepad on screen. Usually, people would use a tool like this
+                            for
+                            showing their controller input on screen for a stream or recorded video.</p>
+                    </section>
+                    <!--
+                                <section>
+                                    <h2>Cool. So, how do I actually use this?</h2>
+
+                                    <p>First you need to make sure your gamepad is connected. Pressing one of the face buttons after
+                                        connecting, like A or &times;, will work. If you did it all correctly, the error
+                                        message should have disappeared and you should be able to select the player and skin. Now, if
+                                        you're still getting a "Disconnected" error, usually refreshing the page will fix that. With
+                                        that, simply <strong>clicking on the dropdown</strong> that says "None" will give you the option
+                                        to select a player. If the player disconnected, you'll see a red silhouette of the controller
+                                        with the words "Disconnected", else you should see the gamepad inputs displayed when you press
+                                        them on the controller. The other dropdown next to that one lets you <strong>switch
+                                            skins</strong>. Switching skins is as easy as clicking the icon (which is by default an Xbox
+                                        logo for the Xbox One controller) and selecting the preferred skin by name.</p>
+                                </section>
+                -->
+                    <section>
+                        <h2>How do I set this up to record/stream?</h2>
+
+                        <p>Just follow the steps on the <a href="#about">Info page</a> and you should be ready to go in
+                            no
+                            time.</p>
+                    </section>
+                    <section>
+                        <h2>How do I make a custom skin?</h2>
+
+                        <p>Well, you need to have some basic knowledge of CSS and how it works to make one from scratch,
+                            but
+                            I have an <a href="https://gist.github.com/mrmcpowned/31eddbc3f8344ee69799">example file</a>
+                            which can help you. be sure to check up on it every once in a while though as I do make
+                            changes
+                            to in to coincide with updates on the site.</p>
+                    </section>
+                    <section>
+                        <h2>Can I edit the skins instead of just making a custom one?</h2>
+
+                        <p>Yes! You can use the <code class="codeblock">editcss=</code> URL parameter to point to a
+                            properly
+                            formatted CSS file which will edit the currently selected skin. Here's a small <a
+                                href="https://gist.github.com/mrmcpowned/a787fc4f5307b7c008fb">example edit file</a>
+                            just to show what can be done.</p>
+                    </section>
+
+                </article>
+            </div>
+        </div>
+        <div id="docs" class="modal-container">
+            <a class="bglink" href="#">
+                <div class="modal-bg"></div>
+            </a>
+
+            <div class="modal">
+                <header class="minimenu">
+                </header>
+                <header>
+                    <a class="close" href="#">&times;</a>
+
+                    <h1>Parameter Documentation</h1>
+                </header>
+                <article>
+                    <p>This section contains documentation of each URL parameter. If you'd like to generate your own
+                        custom
+                        URL, please visit
+                        <a href="#generate">this page</a>.
+                    </p>
+                    <section class="definition">
+                        <h2 data-param="p=">Player Number</h2>
+
+                        <div class="codeblock">https://gamepadviewer.com/?p=1</div>
+                        <ul>
+                            <li>N/A</li>
+                            <li>1</li>
+                            <li>1,2,3,4</li>
+                            <li>Setting this parameter initiates "Compact Mode", which removes the background and UI
+                                elements so only the controller is
+                                displayed
+                            </li>
+                        </ul>
+                        <p>The player number parameter is the main method of selecting which connected controller to
+                            view in
+                            Compact Mode.</p>
+                    </section>
+                    <section class="definition">
+                        <h2 data-param="s=">Skin ID</h2>
+
+                        <div class="codeblock">https://gamepadviewer.com/?s=1</div>
+                        <ul>
+                            <li>N/A</li>
+                            <li>1</li>
+                            <li>0,1,2,3,4,5</li>
+                            <li>Setting the ID to anything other than the values above defaults the skin to '1', which
+                                is
+                                the "Xbox One" skin
+                            </li>
+                            <li>Setting a player number (<code class="codeblock">p=</code>) is <strong>required</strong>
+                                if
+                                you plan
+                                on using the skin ID parameter
+                            </li>
+                        </ul>
+                        <p>Setting a skin ID is the only way to choose what gamepad it is you'd like to display in
+                            Compact
+                            Mode. If you'd like to use a custom skin, you'll need to read about the <code
+                                class="codeblock">css=</code>
+                            parameter below.</p>
+                    </section>
+                    <section class="definition">
+                        <h2 data-param="smeter=">Strength Meter</h2>
+
+                        <div class="codeblock">https://gamepadviewer.com/?smeter=1</div>
+                        <ul>
+                            <li>N/A</li>
+                            <li>0</li>
+                            <li>0,1</li>
+                            <li>Any value other than '1' disables this setting</li>
+                        </ul>
+                        <p>When this setting is enabled, the visual representation for the triggers will be strength
+                            meters
+                            instead of opacity levels.</p>
+                    </section>
+                    <section class="definition">
+                        <h2 data-param="sc=">Scale Multiplier</h2>
+
+                        <div class="codeblock">https://gamepadviewer.com/?sc=1.2</div>
+                        <ul>
+                            <li>N/A</li>
+                            <li>1</li>
+                            <li>Any number, including decimal values</li>
+                            <li>Negative values simply flip the skin, while also scaling it negatively</li>
+                        </ul>
+                        <p>Enabling this setting allows you to scale the gamepad's size using either integer or decimal
+                            values.</p>
+                    </section>
+                    <section class="definition">
+                        <h2 data-param="dz=">Deadzone Radius</h2>
+
+                        <div class="codeblock">https://gamepadviewer.com/?dz=0.3</div>
+                        <ul>
+                            <li>N/A</li>
+                            <li>.25</li>
+                            <li>Any number from 0 to 1, including decimal values</li>
+                            <li>Setting this to 1 or anything greater basically disables the sticks' movement</li>
+                        </ul>
+                        <p>This setting is ideal if you have an old gamepad that's experiencing stick drifting, or
+                            simply
+                            don't want every tiny movement made with the gamepad to be displayed.</p>
+                    </section>
+                    <section class="definition">
+                        <h2 data-param="delay=">Input Delay</h2>
+
+                        <div class="codeblock">https://gamepadviewer.com/?delay=2000</div>
+                        <ul>
+                            <li>Milliseconds</li>
+                            <li>0</li>
+                            <li>Any positive number</li>
+                        </ul>
+                        <p>If you capture gameplay from a PS4 and have your controller connected to both the computer
+                            and
+                            console, this setting is for you. Simply enter the stream delay from the console to your PC
+                            in
+                            milliseconds and your inputs will be synced, instead of ahead.</p>
+                    </section>
+                    <section class="definition">
+                        <h2 data-param="rot=">Rotational Stop</h2>
+
+                        <div class="codeblock">https://gamepadviewer.com/?rot=450</div>
+                        <ul>
+                            <li>Degrees</li>
+                            <li>120</li>
+                            <li>Any positive number</li>
+                            <li>This number is half the total rotational stop of the wheel. E.g. A wheel with a 900deg
+                                max
+                                rotation will have a 450deg rotation stop.
+                            </li>
+                            <li>Deadzone values <strong>WILL</strong> affect this setting. Setting <code
+                                    class="codeblock">dz=0</code>
+                                is recommended.
+                            </li>
+                        </ul>
+                        <p>This setting is meant mainly for having the thumbsticks represent wheels, with the option to
+                            set
+                            their max degree of rotation.</p>
+                    </section>
+                    <section class="definition">
+                        <h2 data-param="css=">Custom CSS URL</h2>
+
+                        <div class="codeblock">
+                            https://gamepadviewer.com/?css=https://gist.githubusercontent.com/mrmcpowned/d61ff0d8d0c57cc207d8/raw/minimal%2520xbox.css
+                        </div>
+                        <ul>
+                            <li>N/A</li>
+                            <li>None</li>
+                            <li>Any URL pointing to a properly formatted CSS file</li>
+                            <li>This parameter disables the <code class="codeblock">id=</code> parameter</li>
+                            <li>Whatever the selected skin's CSS class is is replaced with the <code
+                                    class="codeblock">.custom</code>
+                                class
+                            </li>
+                        </ul>
+                        <p>Using this parameter allows you to completely change the design of the Gamepad Viewer into
+                            one of
+                            your own or one somebody has shared.</p>
+                    </section>
+                    <section class="definition">
+                        <h2 data-param="editcss=">Edit CSS URL</h2>
+
+                        <div class="codeblock">
+                            https://gamepadviewer.com/?editcss=https://gist.githubusercontent.com/mrmcpowned/a787fc4f5307b7c008fb/raw/edit%2520example.css
+                        </div>
+                        <ul>
+                            <li>N/A</li>
+                            <li>None</li>
+                            <li>Any URL pointing to a properly formatted CSS file</li>
+                            <li>The <code class="codeblock">.edit</code> class is applied to all gamepads</li>
+                        </ul>
+                        <p>Similar to the <code class="codeblock">css=</code> parameter, you can edit the currently
+                            selected
+                            skin's css instead of making a completely new skin.</p>
+                    </section>
+
+                </article>
+            </div>
+        </div>
+        <div id="log" class="modal-container">
+            <a class="bglink" href="#">
+                <div class="modal-bg"></div>
+            </a>
+
+            <div class="modal">
+                <header class="minimenu">
+                </header>
+                <header>
+                    <a class="close" href="#">&times;</a>
+
+                    <h1>Changelog</h1>
+                </header>
+                <article class="changelog">
+
+                    <div class="log">
+                        <h3>Version 0.7.0 - March 8, 2017</h3>
+                        <ul>
+                            <li><b>New Skin</b>: There's a sorta-new skin in the available list: The white PS3
+                                controller.
+                                Edits are courtesy of <a href="https://www.twitch.tv/million_lights">Million Lights</a>
+                            </li>
+                            <li><b>OBS Studio & Issues</b>: A recent update to OBS Studio has updated the browser
+                                source,
+                                and in doing so has partially broken the Gamepad Viewer. A workaround exists so you can
+                                continue using the Gamepad Viewer until I can find out where it is exactly the bug
+                                that's
+                                causing this issue is, and fix it (but that will most likely take some time, cause
+                                school).
+                                The steps to fix are as follows:
+                                <code>
+                                1. Double click the Browser Source which has your Gamepad Viewer custom URL
+                                2. Scroll down and click "Clear Cache"
+                                3. Click "Cancel", not "OK" and not the "X" button at the top right
+                                4. Make DOUBLE sure you click "Cancel" else you'll have to repeat steps 2 and 3.
+                            </code>
+                            </li>
+                            <li><b>I'm not dead</b>: I'm still alive, even though school has me beaten down. I still
+                                answer
+                                emails though, so if you have any issues just send one of those, or if you're more of a
+                                cool
+                                kid like me, join me in my <a href="https://discord.gg/0SdzYaRROBqfdd0v">Discord
+                                    server</a>.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="log">
+                        <h3>Version 0.7.0 - August 17, 2016</h3>
+
+                        <ul>
+                            <li><b>Patreon</b>: Yup, <a href="https://www.patreon.com/mrmcpowned" target="_blank"
+                                    class="externalLink" rel="nofollow">this thing's on Patreon</a>. If
+                                you know someone who'd be willing to support, feel free to point 'em in the right
+                                direction.
+                            </li>
+                            <li><b>New Skin</b>: The long-awaited and much-requested GameCube skin is finally out! Sorry
+                                I
+                                kinda took too long with this one, it's just that I wanted to get some stuff together
+                                and
+                                ship this with some other things that needed to be done, as follows...
+                            </li>
+                            <li><b>GameCube controller Fix</b>: So, if you own a GameCube controller and MayFlash
+                                adapter,
+                                you'd get some really weird values for the triggers and sticks, even if you tried
+                                remapping.
+                                Now, there's new remapping setting which can help you solve that! Just watch <a
+                                    href="https://www.youtube.com/watch?v=_jdupqY9oxM" target="_blank"
+                                    class="externalLink" rel="nofollow">the update video</a> to find out how to do just
+                                that!
+                            </li>
+                            <li><b>Remapping Axis/Button exclusion</b>: Another small but useful update to button
+                                remapping
+                                is the ability to disable a button or axes' ability to be selected when remapping
+                                inputs.
+                                This is typically useful for when you have an out of control axis that changes values
+                                rapidly and don't want it interfering with remapping. To cancel an input's mapping
+                                ability,
+                                simply right click it's blue box on the mapping page after a player is selected. To
+                                re-enable the input, simply right click the red box.
+                            </li>
+                            <li><b>DPAD POV Mapping</b>: Another common issue was that of DPADs that show up as a single
+                                axis input, or a <a href="https://en.wikipedia.org/wiki/Joystick#Hat_switch"
+                                    target="_blank" class="externalLink" rel="nofollow">Point-Of-View Hat Switch</a>.
+                                With
+                                the new "DPAD" remapping option, just select the DPAD's axis, fill in the requested
+                                values,
+                                and the DPAD should be fixed!
+                            </li>
+                            <li><b>Remapping feedback</b>: When I was asking someone to test the new remapping options,
+                                i
+                                found that they had a hard time of telling if something worked or if it failed. To fix
+                                that,
+                                should a mapping failed, you'll see a persistent error message in red above the
+                                appropriate
+                                mapping, and if it succeeds, a green success message which fades away.
+                            </li>
+                            <li><b>Remapping UI Populated via URL</b>: Before when you would access exported remapping
+                                settings via URL, you couldn't edit them or customize them. Now, when accessing the
+                                exported
+                                mappings via URL, the remapping page will populate with the appropriate settings.
+                            </li>
+                            <li><b>Input hints in Generate Page</b>: Now, before entering information into the text
+                                boxes
+                                you see input hints. Hopefully this helps with people who are unsure of what to place in
+                                those inputs.
+                            </li>
+                            <li><b>New Generate Page options</b>: You can now disable stick curving and change the stick
+                                offset as well.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="log">
+                        <h3>Version 0.6.2 - April 27, 2016</h3>
+
+                        <ul>
+                            <li><strong>New Digs</strong>: Now sure if you've noticed, but the URL doesn't say
+                                <strong>http://mrmcpowned.com/gamepad</strong>
+                                anymore! Yup, the site's on it's own special domain:
+                                <a href="https://gamepadviewer.com/">https://gamepadviewer.com/</a> Don't worry about
+                                the
+                                old links either, they'll redirect here properly from the old address.
+                            </li>
+                            <li><strong>Discord</strong>: I've got a <a
+                                    href="https://discord.gg/0SdzYaRROBqfdd0v">Discord
+                                    Server</a> setup for anyone who feels the need to chat or prefers help in a slightly
+                                faster
+                                manner. I'm usually on, although that doesn't mean not busy working either :P
+                            </li>
+                            <li><strong>Problems? Questions? Concerns?</strong>: If anything's broken, or if you need
+                                help,
+                                or just wanna say hi, you can always contact me using the <a href="#contact">contact
+                                    form</a> or by visiting the discord server linked above.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.6.1 - April 23, 2016</h3>
+
+                        <ul>
+                            <li><strong>Mapping Bugfix</strong>: Apparently mapping values for buttons that don't exist
+                                (like
+                                trying to show a touchpad or PS Button press) was broken before, but now it's not!
+                            </li>
+                            <li><strong>Swanky New Skin</strong>: Thanks to an anonymous benefactor, there's a new white
+                                DS4
+                                skin, and it looks <em>sweeeeet</em>.
+                            </li>
+                            <li><strong>DS4 Changes</strong>: The DS4's touchpad press is now represented (though not
+                                the
+                                touches on the touchpad, as I have no way of figuring out that information from the
+                                Gamepad
+                                API), as well as the PS button. Also, the sticks are inverted now when pressed, and I
+                                have
+                                no idea why I didn't set them to do that before. Enjoy!
+                            </li>
+                            <li><strong>Not much else</strong>: Yeah, not much else to this update. I've mostly been
+                                working
+                                on a site redesign for a podcast, so that's been my main focus so far in terms of work.
+                                Once
+                                I'm done with that, I'll probably get to work on this and go through the tasks I have
+                                listed
+                                on the trello.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.6.0 - March 20, 2016</h3>
+
+                        <ul>
+                            <li><strong>Getting Started</strong>: There's a <a
+                                    href="https://youtu.be/XZLBh5yul6I">getting
+                                    started video</a> on YouTube for anyone who's unsure about how to set up the tool,
+                                or for
+                                those who are curious and don't have a gamepad to test! It's also on the <a
+                                    href="#about">Info
+                                    &amp; About</a> page too for easy access.
+                            </li>
+                            <li><strong>Pretty Colors</strong>: You can now change the color of the background with a
+                                click of a button! Just click the palette icon after you've connected your controller
+                                and
+                                <em>voila</em>, you're instantly a background <em>artiste</em>.
+                            </li>
+                            <li><strong>Gamepad Cartesian</strong>: Controller button remapping is
+                                <strong><em>finally</em></strong> here! It's got a <em>swanky</em> <a href="#remap">new
+                                    modal</a>, some very intuitive functionality, and even the ability to export
+                                mappings to
+                                the URL generator. Yay! If you're a little lost on how to use it, simply choose a
+                                connected
+                                player, add a mapping, select whether you're mapping an axis or button and select the
+                                appropriate choice from the dropdown, click the button to set an axis/button to be
+                                mapped to
+                                (at this point you have a three second window to press the desired button on the
+                                controller), and when you're finished that process with all applicable mappings, just
+                                click
+                                "Apply Mappings" or export them for use with Compact Mode. <strong>Author's
+                                    Note</strong> -
+                                Yeah, it's a tad complicated, but I'll be making a video soon on how to set mappings up
+                                easily. <a href="http://chrisr.xyz/s/2016-03-14_17-20-17.mp4">Here's a sort of mini
+                                    tutorial
+                                    on how to do it</a>. Also, the Touchpad and PS buttons work, it's just that none of
+                                the
+                                skins have anything set up for them when they're pressed.
+                            </li>
+                            <li><strong>New Skins</strong>: Finally, I've included a generic Fight Stick skin setup for
+                                use. The background's transparent so you can use your favorite image as your own
+                                background
+                                :D
+                            </li>
+                            <li><strong>White wash</strong>: Decided to have the top row of icons all be white to follow
+                                some sort of consistency.
+                            </li>
+                            <li><strong>Ah, the [Scale]ne Triangle</strong>: So, I kinda might have broken scaling
+                                during
+                                the last update. Luckily, I caught it quick and fixed it a couple days after I pushed
+                                the
+                                last major update, but I thought you should know anyway.
+                            </li>
+                            <li><strong>Generated Choice</strong>: Now if you generate a URL, the tooltip mentions you
+                                can hold shift and it'll copy the link starting with HTTP instead of HTTPS, which leads
+                                me
+                                to...
+                            </li>
+                            <li><strong>A word on HTTPS and skins</strong>: Ok, so during the last major update, I
+                                decided it would be great to force HTTPS. I mean, why not, right? Then I realized people
+                                load skins insecurely from their own sites, to which I hurriedly changed the setting.
+                                So, if
+                                your stylesheet or any assets are loaded via HTTP, access the site from HTTP, else use
+                                HTTPS.
+                            </li>
+                            <li><strong>To <code>name</code>, or not to <code>name</code></strong>: Another sort of
+                                unimportant-but-still-interesting-I-kinda-suppose-maybe updates was changing the
+                                attribute
+                                used to select buttons and axes from <code>name</code> to <code>data-name</code> which
+                                has
+                                it fall more inline with HTML5's semantics. Riveting stuff, I know.
+                            </li>
+                            <li><strong>Addendum on Remapping</strong>: It should be noted that you can't half remap an
+                                axis, like say you only want to map the positive or only the negative end. If you try to
+                                do
+                                that, the mapping is just straight up ignored.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.5.1 - February 18, 2016</h3>
+                        <ul>
+                            <li><strong>FightPad Pro Skin</strong>: Not much of an overall update, but an update
+                                nonetheless! Many a thanks to
+                                <a href="https://twitch.tv/kingradinov" target="_blank">King Radinov</a> for being the
+                                first
+                                skin adopter! If you'd like to show the right stick instead of the left stick, you can
+                                use
+                                <a href="https://gist.githubusercontent.com/mrmcpowned/511679c83346beed889d/raw/2a1c08d3c3321f59e33d460b365f6ec489e63d1d/rightstick.css"
+                                    target="_blank">this edit CSS</a> as well.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.5.0 - February 1, 2016</h3>
+                        <ul>
+                            <li><strong>New Slide-in Menu</strong>: Who needs square buttons when you have a <em>whole
+                                    menu</em> to link to stuff. Stuff like...
+                            </li>
+                            <li><strong>Modals</strong>: All brand-spankin'-new content modals, for everything and
+                                anything
+                                that needs text on it.
+                            </li>
+                            <li><strong>Contact Form</strong>: If you're lonely and want someone to talk to or want to
+                                find
+                                out more info on the new...
+                            </li>
+                            <li><strong>Adopt a Skin Initiative</strong>: I don't think I could properly summarize what
+                                I
+                                have written on the page, so <a href="#adoptaskin">here's a link to it instead</a>!
+                            </li>
+                            <li><strong>Edit CSS Parameter</strong>: Because sometimes you just want to <a
+                                    target="_blank"
+                                    href="https://gamepadviewer.com/?editcss=https%3A%2F%2Fgist.githubusercontent.com%2Fmrmcpowned%2Fa787fc4f5307b7c008fb%2Fraw%2Fedit%252520example.css">make
+                                    all the colors look psychedelic</a>.
+                            </li>
+                            <li><strong>Edit Opacity Parameter</strong>: Sometimes you just want the controller to melt
+                                into
+                                the background, forever hidden yet always seen.
+                            </li>
+                            <li><strong>Click to copy</strong>: Now you can simply *<strong>click</strong>* and easily
+                                copy
+                                a generated URL. Speaking of which...
+                            </li>
+                            <li><strong>Generate custom URLs</strong>: Long gone are the cavemen times when man used to
+                                place numbers into address bars. Behold, a new age of typing things into forms and
+                                clicking
+                                to copy them dawns upon us!
+                            </li>
+                            <li><strong>Trigger meters</strong>: This a feature many of you have asked for, and one that
+                                I've neglected for far too long. It's finally here though and it looks
+                                <em>sweeeeet</em>.
+                            </li>
+                            <li><strong>Better controller centering CSS</strong>: This one isn't a very large
+                                announcement,
+                                since it only really affects custom skins but now centering them is done better and no
+                                longer necessary on the custom skin's end of things!
+                            </li>
+                            <li><strong>X360 Quadrant Fixed</strong>: Another bugfix, but anyone who would see a black
+                                square for the quadrant shouldn't be having that issue anymore.
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.4.0 - November 18, 2015</h3>
+                        <ul>
+                            <li>Added a new skin, the DualShock 4! The trackpad can't show where your finger is, but
+                                pushing
+                                down on the trackpad is registered (but not shown because I haven't implemented that
+                                yet).
+                            </li>
+                            <li>Added a new deadzone setting, just add &dz=[Any number from 0 to 1] to the URL! The
+                                default
+                                is set to .25 and the accepted values are anything between 0 and 1 (although at 1 you
+                                wouldn't have anything showing because the max the sticks go to is 1)
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.3.4 - November 8, 2015</h3>
+                        <ul>
+                            <li>Added a new skin, the DualShock 4! The trackpad can't show where your finger is, but
+                                pushing
+                                down on the trackpad is registered (but not shown because I haven't implemented that
+                                yet).
+                            </li>
+                            <li>Added a new deadzone setting, just add &dz=[Any number from 0 to 1] to the URL! The
+                                default
+                                is set to .25 and the accepted values are anything between 0 and 1 (although at 1 you
+                                wouldn't have anything showing because the max the sticks go to is 1)
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.3.3 - October 25, 2015</h3>
+                        <ul>
+                            <li>Added queueing, with code provided by <a href="http://romibi.ch/">romibi</a>, so many a
+                                thanks to him.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.3.2 - August 15, 2015</h3>
+                        <ul>
+                            <li>Added custom styles! Now, you too can make your own controller skin and share it with
+                                your
+                                friends!
+                            </li>
+                            <li>To apply a custom skin, add &css=[url to CSS file] to the end of the address.</li>
+                            <li>Added some HTML for future fighstick functionality.</li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.3.1 - July 7, 2015</h3>
+                        <ul>
+                            <li>Added back the Xbox 360 skin, cause reasons</li>
+                            <li>The new URL ID for the Xbox 360 skin is 4</li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.3.0 - July 6, 2015</h3>
+                        <ul>
+                            <li>Hello darkness my old friend <sup>I've come to speak with you again...</sup></li>
+                            <li>Finally updated the Xbox controller skin</li>
+                            <li>Added a dark Xbox controller skin along with a white one</li>
+                            <li>The new order of skins for the URL params is 0: White Xbox, 2: Dark Xbox, 3: PS
+                                Controller,
+                                4: NES Controller
+                            </li>
+                            <li>New Xbox skin is the first to be saved in SVG format, allowing for infinite scalability.
+                                Speaking of scaling..
+                            </li>
+                            <li>You can now scale controllers using &sc=[scale multiplier] in the URL! Do note, this
+                                currently works best with the Xbox controller skins at the moment due to them being
+                                scalable
+                                vectors. The other controllers will look pixelated at larger sizes, but I'm working on
+                                moving them over to SVG a well :)
+                            </li>
+                            <li>Added links to my <a href="http://twitch.tv/MrMcPowned">Twitch</a>, <a
+                                    href="http://imraising.tv/u/mrmcpowned">ImRaising</a> and
+                                <a href="https://youtube.com/MrMcPowned">YouTube</a> to the top bar.
+                            </li>
+                            <li>I believe in the honor system. If you'd like to donate to me for how much of a help this
+                                tool I've made has been to you, I believe it's up to
+                                <b><strong>you</strong></b> to decide how much you think this app is worth.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.2.2 - May 26, 2014</h3>
+                        <ul>
+                            <li>Added the NES skin for some retro-ey goodness.</li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.2.1 - May 24, 2014</h3>
+                        <ul>
+                            <li>Now you can control the gamepad display via URL parameters. More on that <a
+                                    href="https://obsproject.com/forum/resources/gamepad-display.3/update?update=127">here</a>.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.2.1 - May 23, 2014</h3>
+                        <ul>
+                            <li>New PS3 Skin!</li>
+                            <li>Along with this skin, a way to easily switch skins</li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>PSA - Jan 31, 2014</h3>
+                        <ul>
+                            <li>Just want to point out that if you don't see much development happening on this, it's
+                                not
+                                because I've suddenly abandoned the project, but simply because school is my main
+                                priority;
+                                I only have so much time to dedicate when I have to allot most of it towards my studies.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.1.8 - Jan 21, 2014</h3>
+                        <ul>
+                            <li>The analog sticks may look a little trippy now. Don't worry, that's perfectly normal.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.1.7 - Jan 14, 2014</h3>
+                        <ul>
+                            <li>Bye, bye emoji. Hello, <a href="http://fontawesome.io/">Font Awesome</a>!</li>
+                            <li>Made controller show a red silhouette with the word "Disconnected" when disconnected,
+                                instead of showing a frozen controller display.
+                            </li>
+                            <li>Fixed "Changelog" from Chaneglog", because letters.</li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.1.6 - Jan 4, 2014</h3>
+                        <ul>
+                            <li>Changed the <a href="favicon.png">favicon</a> to something a little more visually
+                                pleasing.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.1.5 - Jan 2, 2014</h3>
+                        <ul>
+                            <li>Added a link to the <a
+                                    href="https://obsproject.com/forum/viewtopic.php?f=22&t=9977">Open
+                                    Broadcaster thread</a> for discussion and user suggestions.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.1.4 - Dec 31, 2013</h3>
+                        <ul>
+                            <li>Applied better deadzoning so the analog sticks won't snap to top edges. Should be a more
+                                of
+                                a radial deadzone now.
+                            </li>
+                            <li>Title now says which player is selected, so you don't have to fumble around with
+                                figuring
+                                out which window you want.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.1.3 - Dec 30, 2013</h3>
+                        <ul>
+                            <li>Changed the title from "Xbox Remote Control" to "Gamepad Viewer" for generic reasons
+                            </li>
+                            <li>Moved the Viewer's location to <a
+                                    href="https://mrmcpowned.com/gamepad">https://mrmcpowned.com/gamepad</a>
+                                from <a href="https://mrmcpowned.com/xbrc">https://mrmcpowned.com/xbrc</a>. The old URL
+                                redirects to the newer one.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.1.2 - Dec 29, 2013</h3>
+                        <ul>
+                            <li>Added a warning to the top of the help pane</li>
+                            <li>Changed non-connected text to "There are currently no gamepads connected. Press any
+                                button
+                                to enable..."
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.1.1 - Dec 28, 2013</h3>
+                        <ul>
+                            <li>Moved directional pad arrows to css for cleaner html. Will allow for easier skinning of
+                                the
+                                gamepad in the future.
+                            </li>
+                            <li>Added a changelog</li>
+                            <li>Added <a href="http://emojisymbols.com/">Emoji Symbols Font</a> for donation button. If
+                                you
+                                like my work, and would like to "buy me a coffee", then simply click the coffee mug up
+                                top
+                                <span class="emj">&#x1F44D;</span>.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="log">
+                        <h3>Version 0.1 - Dec 26, 2013</h3>
+                        <ul>
+                            <li>Initial release</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div id="generate" class="modal-container">
+            <a class="bglink" href="#">
+                <div class="modal-bg"></div>
+            </a>
+
+            <div class="modal">
+                <header class="minimenu">
+                </header>
+                <header>
+                    <a class="close" href="#">&times;</a>
+
+                    <h1>Generate Custom URL</h1>
+                </header>
+                <article id="generate-page">
+                    <div id="generate-area">
+                        <div class="codeblock" id="generated-url" data-clipboard-text="" data-message="" tabindex="0">
+                            Click to copy URL (Hover to show)</div>
+                        <div class="codeblock" id="url-generate-reset"><span>Reset</span></div>
+                    </div>
+                    <!-- GPV Classic - Generate Page -->
+                    <ins class="adsbygoogle" style="display:inline-block;max-width: 834px;width: 100%;height: 90px;"
+                        data-ad-client="ca-pub-6461293058804731" data-ad-slot="9410636958"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                    <form id="url-form">
+                        <div class="form-group"><label for="p-input">Player Number: </label><select id="p-input"
+                                name="p">
+                                <option value="">None (Meant for Chroma-Key users)</option>
+                                <option selected value="1">Player 1</option>
+                                <option value="2">Player 2</option>
+                                <option value="3">Player 3</option>
+                                <option value="4">Player 4</option>
+                            </select><span class="clear"></span></div>
+                        <div class="form-group"><label for="s-input">Skin: </label>
+                            <select id="s-input" name="s">
+                                <option value="">Choose a skin (Xbox One is Default)</option>
+                                <option value="1">Xbox One</option>
+                                <option value="0">Xbox One (White)</option>
+                                <option value="4">Xbox 360</option>
+                                <option value="2">PlayStation 3</option>
+                                <option value="10">PlayStation 3 (White)</option>
+                                <option value="5">PlayStation 4</option>
+                                <option value="8">PlayStation 4 (White)</option>
+                                <option value="9">GameCube</option>
+                                <option value="6">FightPad Pro</option>
+                                <option value="7">Fight Stick</option>
+                                <option value="3">NES</option>
+                                <option value="11">Nintendo 64</option>
+                            </select><span class="clear"></span>
+                        </div>
+                        <div class="form-group"><label for="smeter-input">Strength Meter: </label><input
+                                id="smeter-input" type="checkbox" name="smeter" value="1" /><span class="clear"></span>
+                        </div>
+                        <div class="form-group"><label for="nocurve-input">Stick Curving: </label><input
+                                id="nocurve-input" type="checkbox" name="nocurve" class="flipped" value="1" /><span
+                                class="clear"></span></div>
+                        <div class="form-group"><label for="sc-input">Scale Modifier: </label><input id="sc-input"
+                                type="text" name="sc" placeholder="1 = Normal, 2 = 2x, .5 = Half, etc..." /><span
+                                class="clear"></span></div>
+                        <div class="form-group"><label for="dz-input">Deadzone Value: </label><input id="dz-input"
+                                type="text" name="dz" placeholder="Number from 0.0 to 1.0" /><span class="clear"></span>
+                        </div>
+                        <div class="form-group"><label for="op-input">Opacity Value: </label><input id="op-input"
+                                type="text" name="op" placeholder="Number from 0.0 to 1.0" /><span class="clear"></span>
+                        </div>
+                        <div class="form-group"><label for="delay-input">Delay Value: </label><span
+                                class="input-unit">ms</span><input id="delay-input" type="text" name="delay"
+                                placeholder="1000 = 1 second" /><span class="clear"></span></div>
+                        <div class="form-group"><label for="rot-input">Rotation Stop: </label><span
+                                class="input-unit">deg</span><input id="rot-input" type="text" name="rot" /><span
+                                class="clear"></span></div>
+                        <div class="form-group"><label for="soffset-input">Stick Offset Value: </label><span
+                                class="input-unit">px</span><input id="soffset-input" type="text" name="soffset"
+                                placeholder="Default is 22" /><span class="clear"></span></div>
+                        <div class="form-group"><label for="css-input">Custom CSS URL: </label><input id="css-input"
+                                type="text" name="css" placeholder="http://url.to/custom/stylesheet.css" /><span
+                                class="clear"></span></div>
+                        <div class="form-group"><label for="editcss-input">Edit CSS URL: </label><input
+                                id="editcss-input" type="text" name="editcss"
+                                title="This MUST be linked with https:// to work!"
+                                placeholder="https://url.to/custom/stylesheet.css" /><span class="clear"></span></div>
+                        <input type="text" name="map" id="map-input" hidden>
+                    </form>
+                </article>
+            </div>
+        </div>
+        <div id="remap" class="modal-container">
+            <a class="bglink" href="#">
+                <div class="modal-bg"></div>
+            </a>
+
+            <div class="modal">
+                <header class="minimenu">
+                </header>
+                <header>
+                    <a class="close" href="#">&times;</a>
+
+                    <h1>Button Rebinding</h1>
+                </header>
+                <article>
+                    <p>Please select the controller to use as a mapping base.
+                        <select id="player-base">
+                            <option>None</option>
+                            <option value="0" disabled>Player 1</option>
+                            <option value="1" disabled>Player 2</option>
+                            <option value="2" disabled>Player 3</option>
+                            <option value="3" disabled>Player 4</option>
+                        </select>
+                    </p>
+                    <div id="output-display">
+                        <div class="raw-outputs template">
+                            <div>
+                                <h3>Axes</h3>
+                                <ul class="axes">
+                                </ul>
+                            </div>
+                            <div>
+                                <h3>Buttons</h3>
+                                <ul class="buttons">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="mapping-config">
+                        <a href="#" id="prepend-mapping" class="map-control"><i class="material-icons">add_circle</i>
+                            Add
+                            New Mapping</a>
+                        <a href="https://www.youtube.com/watch?v=b5OxYt0RNzc" target="_blank" id="mapping-help"
+                            class="map-control">Need Help?</a>
+
+                        <div class="template">
+                            <div class="form-group">
+                                <div class="map-message"></div>
+                                <input type="radio" name="targetType" value="buttons" checked>
+                                <input type="radio" name="targetType" value="axes">
+                                <input type="radio" name="targetType" value="dpad">
+                                <input type="checkbox" class="material-icons axes-config" value="false">
+                                <select name="buttons" value>
+                                    <option title="Button 0" value="0">A/Cross</option>
+                                    <option title="Button 1" value="1">B/Circle</option>
+                                    <option title="Button 2" value="2">X/Square</option>
+                                    <option title="Button 3" value="3">Y/Triangle</option>
+                                    <option title="Button 4" value="4">LB/L1</option>
+                                    <option title="Button 5" value="5">RB/R1</option>
+                                    <option title="Button 6" value="6">LT/L2</option>
+                                    <option title="Button 7" value="7">RT/R2</option>
+                                    <option title="Button 8" value="8">Select/Back</option>
+                                    <option title="Button 9" value="9">Start</option>
+                                    <option title="Button 10" value="10">LS/L3</option>
+                                    <option title="Button 11" value="11">RS/R3</option>
+                                    <option title="Button 12" value="12">D-Pad Up</option>
+                                    <option title="Button 13" value="13">D-Pad Down</option>
+                                    <option title="Button 14" value="14">D-Pad Left</option>
+                                    <option title="Button 15" value="15">D-Pad Right</option>
+                                    <option title="Button 16" value="16">PS Button</option>
+                                    <option title="Button 17" value="17">TouchPad Press</option>
+                                </select>
+                                <select name="axes" value>
+                                    <option title="Axis 0" value="0">LS Horizontal</option>
+                                    <option title="Axis 1" value="1">LS Vertical</option>
+                                    <option title="Axis 2" value="2">RS Horizontal</option>
+                                    <option title="Axis 3" value="3">RS Vertical</option>
+                                </select>
+                                <input type="checkbox" class="disable-item" value="true">
+                                <button data-tooltip="Positive Axis" data-button="positive" data-button-type="remapping"
+                                    data-object="">Click to Set
+                                </button>
+                                <button data-tooltip="Negative Axis" data-button="negative" data-button-type="remapping"
+                                    data-object="">Click to Set
+                                </button>
+                                <a href="#" class="material-icons del-config">remove_circle</a>
+                                <a href="#" class="material-icons add-config">add_circle</a>
+
+                                <div class="fix-panel fix-axes">
+                                    <span>Fix Type: </span>
+                                    <select name="fix-type">
+                                        <option value="trigger">Trigger (0 to 1)</option>
+                                        <option value="stick">Stick (-1 to 1)</option>
+                                    </select>
+                                    <button data-tooltip="Lowest Value" data-button="low-value"
+                                        data-button-type="value">
+                                        Click to Set Value
+                                    </button>
+                                    <button data-tooltip="Highest Value" data-button="high-value"
+                                        data-button-type="value">
+                                        Click to Set Value
+                                    </button>
+                                </div>
+
+                                <ul class="fix-panel fix-dpad">
+                                    <li><span>Up: </span>
+                                        <button data-button="up" data-button-type="value">Click to Set Value</button>
+                                    </li>
+                                    <li><span>Down: </span>
+                                        <button data-button="down" data-button-type="value">Click to Set Value</button>
+                                    </li>
+                                    <li><span>Left: </span>
+                                        <button data-button="left" data-button-type="value">Click to Set Value</button>
+                                    </li>
+                                    <li><span>Right: </span>
+                                        <button data-button="right" data-button-type="value">Click to Set Value</button>
+                                    </li>
+                                    <li><span>Up and Right: </span>
+                                        <button data-button="upright" data-button-type="value">Click to Set
+                                            Value</button>
+                                    </li>
+                                    <li><span>Up and Left: </span>
+                                        <button data-button="upleft" data-button-type="value">Click to Set
+                                            Value</button>
+                                    </li>
+                                    <li><span>Down and Right: </span>
+                                        <button data-button="downright" data-button-type="value">Click to Set
+                                            Value</button>
+                                    </li>
+                                    <li><span>Down and Left: </span>
+                                        <button data-button="downleft" data-button-type="value">Click to Set
+                                            Value</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="mappings"></div>
+                        <div class="button-group">
+                            <button id="export-mapping">Export Mapping to URL Generator</button>
+                            <button id="apply-mapping">Apply Mapping</button>
+                            <span class="clear"></span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <!--
+        <div id="showcase" class="modal-container">
+            <a class="bglink" href="#">
+                <div class="modal-bg"></div>
+            </a>
+
+            <div class="modal">
+                <header class="minimenu">
+                </header>
+                <header>
+                    <a class="close" href="#">&times;</a>
+
+                    <h1>Skin Showcase</h1>
+                </header>
+                <article>
+                    <p>Skins</p>
+                    <div class="showcase-group">
+                        <input type="checkbox"  title="" data-heading="Custom Skins"/>
+                        <div class="showcase-list">
+                            <div class="showcase-item">
+                                <div class="preview">
+                                    <iframe src="http://mrmcpowned.com/gamepad/?p=1&s=5&sc=.245" frameborder="0"></iframe>
+                                </div>
+                                <div class="description">
+                                    <h3>This is </h3>
+                                </div>
+                                <span class="clear"></span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    -->
+        <div id="adoptaskin" class="modal-container">
+            <a class="bglink" href="#">
+                <div class="modal-bg"></div>
+            </a>
+
+            <div class="modal">
+                <header class="minimenu">
+                </header>
+                <header>
+                    <a class="close" href="#">&times;</a>
+
+                    <h1>Adopt a Skin</h1>
+                </header>
+                <article>
+                    <p>All the currently served skins are made by me. I usually make them in my spare time when I'm not
+                        working on the site itself. I also will usually make them to take care of the demand for a
+                        certain
+                        skin. I don't get paid to offer this service to all of you, and I know some of you have been
+                        wanting
+                        skins made for some fairly obscure controllers, so as of right now you can adopt a skin! So,
+                        what
+                        does it mean to adopt a skin? Well, the perks are as follows:</p>
+                    <ul>
+                        <li>You get a "thank you" link under the Donations page</li>
+                        <li>In the upcoming Skin Showcase, you'll have an "Adopted by" next to the skin, also with your
+                            link
+                            of choice
+                        </li>
+                        <li>You get a copy of all the CSS and Assets for that skin to do with as you please</li>
+                        <li>The files will be hosted on this site for easy access and use</li>
+                    </ul>
+                    <p>While there are perks, there are also some stipulations, which are listed below:</p>
+                    <ul>
+                        <li>The skin will be available to <strong>all users</strong>. This is why it's called "adopt a
+                            skin", although if you like, you have the option to exclusively use it for a MAXIMUM of 1
+                            month.
+                        </li>
+                        <li>As not every skin is the same, I can't really place a flat price on all of them, but the
+                            baseline pricing is $25.
+                        </li>
+                        <li>Adopting a skin is a commitment, both on your part and mine. It takes time and vast amounts
+                            of
+                            effort for me to make these skins to the standard of quality I place. Because of this, the
+                            payment process will consist of 50% of the cost up front, and the other 50% at time of
+                            delivery.
+                            If you back out or decide not to pay the last half, I am entitled to keep the initial
+                            payment as
+                            a severance charge.
+                        </li>
+                    </ul>
+                    <p>If you agree to the terms described above, clicking the button below will open the contact page
+                        with
+                        the proper subject selected</p>
+                    <a href="#contact" id="skin-tc">I agree to the Terms and Conditions stated above and would like to
+                        inquire about skin
+                        adoption.</a>
+
+                </article>
+            </div>
+        </div>
+        <div id="contact" class="modal-container">
+            <a class="bglink" href="#">
+                <div class="modal-bg"></div>
+            </a>
+
+            <div class="modal">
+                <header class="minimenu">
+                </header>
+                <header>
+                    <a class="close" href="#">&times;</a>
+
+                    <h1>Contact Me</h1>
+                </header>
+                <article>
+                    <p>If you want to send me a message about asking me a question or anything like that, just <a
+                            href="https://discord.gg/0SdzYaRROBqfdd0v">join the discord</a>. </p>
+
+                    <!--<form action="mailer.php" id="contact-form" method="post">-->
+                    <!--<div id="messages" class=""></div>-->
+                    <!--<div class="form-group"><input type="text" placeholder="Full Name" name="name" required></div>-->
+                    <!--<div class="form-group"><input type="email" placeholder="Your Email" name="email" required></div>-->
+                    <!--<div class="form-group">-->
+                    <!--<select name="subject" required>-->
+                    <!--<option value="general" selected>General Inquiry</option>-->
+                    <!--<option value="skin">Skin Adoption Inquiry</option>-->
+                    <!--<option value="help">Gamepad Viewer Help</option>-->
+                    <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="form-group"><textarea name="message" minlength="80" required></textarea></div>-->
+                    <!--<div class="g-recaptcha" data-sitekey="6LeUaQwUAAAAAMfeh74M-VE-m2ddppIICvdYePS_"></div>-->
+                    <!--<div class="button-group">-->
+                    <!--<button type="reset">Reset</button>-->
+                    <!--<button type="submit">Submit</button>-->
+                    <!--</div>-->
+                    <!--<span class="clear"></span>-->
+                    <!--</form>-->
+                </article>
+            </div>
+        </div>
+        <div id="donate" class="modal-container">
+            <a class="bglink" href="#">
+                <div class="modal-bg"></div>
+            </a>
+
+            <div class="modal">
+                <header class="minimenu">
+                </header>
+                <header>
+                    <a class="close" href="#">&times;</a>
+
+                    <h1>Donations</h1>
+
+                </header>
+                <article>
+                    <div class="left">
+
+                        <p>I'm a fair believer in the honor system, so I believe it's up to you to set the amount of
+                            what
+                            you
+                            think my tools are worth to you. Below, you can choose to give me a donation via PayPal
+                            (through
+                            Twitch Alerts). I've also <a href="https://www.patreon.com/mrmcpowned" target="_blank">set
+                                up a Patreon</a> for those
+                            who wish to donate via that.</p>
+
+                        <div class="info">
+                            <div>
+                                <h2>Skin Adopters</h2>
+                                <ul>
+                                    <li><a href="https://twitch.tv/kingradinov" target="_blank">King Radinov</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <!--
+                                                    <h2>CLR Browser Installation</h2>
+                                                    <ol>
+                                                        <li>Head to the <a href="#generate">URL Generator</a> to create your own gamepad URL</li>
+                                                        <li>Click on the generated preview URL to copy it</li>
+                                                        <li>In OBS, create a new CLR Browser source</li>
+                                                        <li>Paste the copied URL in the "URL" text box in the browser source</li>
+                                                        <li>The width and height will require playing around with inorder to get the right values,
+                                                            so simply work your way up or down from the default values the source already has set
+                                                        </li>
+                                                        <li>Click "OK" and you're done!</li>
+                                                    </ol>
+                            -->
+                            </div>
+                            <span class="clear"></span>
+                        </div>
+                    </div>
+
+                    <div class="donate-buttons">
+                        <a target="_blank" href="https://www.patreon.com/mrmcpowned">
+                            <div class="amzn dbutton"><i class="fa fa-patreon"></i><span>Support via Patreon!</span>
+                            </div>
+                        </a>
+                        <!--<a target="_blank" href="https://greenaddress.it/pay/GA3NubGP8aLdjYbNHqH72SGAUyBWu3/">-->
+                        <!--<div class="btc dbutton"><i class="fa fa-btc"></i><span>Bitcoin</span></div>-->
+                        <!--</a>-->
+                        <a target="_blank" href="https://www.twitchalerts.com/donate/mrmcpowned">
+                            <div class="pp dbutton"><i class="fa fa-paypal"></i><span>PayPal</span></div>
+                        </a>
+                    </div>
+
+                </article>
+            </div>
+        </div>
+        <div class="modal-container">
+            <a class="bglink" href="#">
+                <div class="modal-bg"></div>
+            </a>
+
+            <div class="modal">
+                <header class="minimenu">
+                </header>
+                <header>
+                    <a class="close" href="#">&times;</a>
+
+                    <h1>Parameters List</h1>
+                </header>
+                <article>
+                    <p>Ayyy</p>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="gamepads">
+        <div class="template">
+            <div class="plshalpme">
+                <div>
+                    <p>Disconnected</p>
+
+                    <p><a href="https://goo.gl/XF4VjL">https://goo.gl/XF4VjL</a></p>
+                </div>
+            </div>
+            <div class="triggers">
+                <span class="trigger left" data-name="button-left-shoulder-bottom"></span>
+                <span class="trigger right" data-name="button-right-shoulder-bottom"></span>
+                <span class="trigger-button left" data-name="button-left-shoulder-bottom-digital"></span>
+                <span class="trigger-button right" data-name="button-right-shoulder-bottom-digital"></span>
+                <span class="clear"></span>
+            </div>
+            <div class="bumpers">
+                <span class="bumper left" data-name="button-left-shoulder-top"></span>
+                <span class="bumper right" data-name="button-right-shoulder-top"></span>
+                <span class="clear"></span>
+            </div>
+            <div class="touchpad" data-name="touch-pad"></div>
+            <div class="quadrant"></div>
+            <div class="meta" data-name="button-meta"></div>
+            <div class="arrows">
+                <span class="back" data-name="button-select"></span>
+                <span class="start" data-name="button-start"></span>
+                <span class="clear"></span>
+            </div>
+            <div class="abxy">
+                <span class="button a" data-name="button-1"></span>
+                <span class="button b" data-name="button-2"></span>
+                <span class="button x" data-name="button-3"></span>
+                <span class="button y" data-name="button-4"></span>
+            </div>
+            <div class="sticks">
+                <span class="stick left" data-name="stick-1"></span>
+                <span class="stick right" data-name="stick-2"></span>
+            </div>
+            <div class="wheels">
+                <span class="wheel left" data-name="stick-1-wheel"></span>
+                <span class="wheel right" data-name="stick-2-wheel"></span>
+            </div>
+            <div class="dpad">
+                <span class="face up" data-name="button-dpad-top"></span>
+                <span class="face down" data-name="button-dpad-bottom"></span>
+                <span class="face left" data-name="button-dpad-left"></span>
+                <span class="face right" data-name="button-dpad-right"></span>
+            </div>
+            <div class="fstick" data-name="arcade-stick"></div>
+        </div>
+        <div class="controller xbox disconnected" id="gamepad-0"></div>
+        <div class="controller xbox disconnected" id="gamepad-1"></div>
+        <div class="controller xbox disconnected" id="gamepad-2"></div>
+        <div class="controller xbox disconnected" id="gamepad-3"></div>
+    </div>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="messageManager.js"></script>
+    <script type="text/javascript">
+        tester.init();
+        gamepadSupport.init();
+    </script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-20916585-6', 'auto');
+        ga('require', 'linkid');
+        ga('send', 'pageview');
+
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8b253dfea2ab4077af8c6f58422dfbfd1689876627854" integrity="sha512-bjgnUKX4azu3dLTVtie9u6TKqgx29RBwfj3QXYt5EKfWM/9hPSAI/4qcV5NACjwAo8UtTeWefx6Zq5PHcMm7Tg==" data-cf-beacon='{"rayId":"8130ead43913d995","version":"2023.8.0","r":1,"token":"c93c0f6d75ef4f439f5542d0a154a7a1","si":100}' crossorigin="anonymous"></script>
+</body>
+
+</html>
