@@ -14,12 +14,9 @@
     left: 0px;
     z-index: 0;
 }
-}
-
-.xbox .abxy {
+.xbox .button {
     position: absolute;
+    background: url(xbox-assets/abxy.svg);
     width: 0px;
-    height: 06px;
-    top: 0px;
-    left: 0px;
+    height: 0px;
 }
