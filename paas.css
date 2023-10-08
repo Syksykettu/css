@@ -1,0 +1,20 @@
+.controller.xbox {
+    background: url(https://cdn.discordapp.com/attachments/1153752593479245827/1160717204417949767/paas.png?ex=6535ad22&is=65233822&hm=372381c0e5ce514dbf0a070f040b64facdf791f13b58503e76a1665224986739&.png);
+    height: 630px;
+    width: 750px;
+    /*    margin-left: -375px;
+        margin-top: -280px;*/
+}
+.xbox .quadrant {
+    position: absolute;
+    background: url(xbox-assets/quadrant.svg);
+    height: 0px;
+    width: 0px;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+.xbox .button.pressed {
+    background-position-y: -48px;
+    margin-top: 5px;
+    opacity: 1;
+}
